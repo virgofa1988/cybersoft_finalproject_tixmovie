@@ -1,0 +1,129 @@
+/* Custome tab button */
+.movie__slider .ant-tabs-top > .ant-tabs-nav::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  border-bottom: 0px solid #f0f0f0;
+  content: "";
+}
+.movie__slider .ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
+  position: relative;
+  width: 300px;
+  justify-content: space-between;
+  flex: none;
+  margin: auto auto;
+}
+.movie__slider .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list {
+  width: 100%;
+  justify-content: space-between;
+}
+.movie__slider .ant-tabs-tabpane {
+  max-width: 950px;
+  margin: 28px auto;
+  box-shadow: 1px 11px 17px 1px grey;
+}
+.movie__slider .ant-tabs-tab .ant-tabs-tab-btn {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
+}
+.movie__slider .ant-tabs-tab .ant-tabs-tab-btn:hover {
+  font-size: 1.3rem;
+}
+.movie__slider .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab,
+.ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
+  border: none;
+  background: none;
+}
+.movie__slider .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #fa5238;
+  line-height: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+}
+
+/* Loại bỏ hiện tượng slick-track tạo horizontal scollbar */
+.movie__slider .slick-slider {
+  width: 100%;
+  max-width: 950px;
+}
+/* Xử lý Arrows của Slick_Carousel*/
+.movie__slider .slick-prev {
+  background-image: url("../../img/Carousel/back-session.png");
+  left: -70px;
+}
+.movie__slider .slick-prev:hover {
+  background-image: url("../../img/Carousel/back-session.png");
+  left: -70px;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 100px;
+  z-index: 10;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.movie__slider .slick-prev::before {
+  content: none;
+}
+.movie__slider .slick-next::before {
+  content: none;
+}
+.movie__slider .slick-next {
+  background-image: url("../../img/Carousel/next-session.png");
+  right: -70px;
+}
+.movie__slider .slick-next:hover,
+.slick-next:active {
+  background-image: url("../../img/Carousel/next-session.png");
+  right: -70px;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 100px;
+  z-index: 10;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.movie__slider .slick-arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 100px;
+  z-index: 10;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.showMoreBtn {
+  font-size: 1.2rem;
+  color: #949494;
+  border: 1px solid #949494;
+  border-radius: 4px;
+  text-align: center;
+  background: 0 0;
+  padding: 7px 25px;
+  transition: all 0.2s;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.showMoreBtn:hover {
+  color: #0f0e0e;
+}

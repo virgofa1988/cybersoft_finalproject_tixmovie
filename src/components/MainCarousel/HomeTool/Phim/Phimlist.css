@@ -1,0 +1,42 @@
+.PhimHomeTool {
+  background-image: url("../../../../img/HomeTool/dropdown-icon.png");
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+}
+/* Set height for List and make it scrolable */
+.selectPhimList {
+  max-height: 300px;
+  overflow: auto;
+  width: 22.5rem;
+}
+/* Customize the Scrollbar */
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+}
+/* width */
+/* ::-webkit-scrollbar {
+  width: 10px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: #888;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+} */

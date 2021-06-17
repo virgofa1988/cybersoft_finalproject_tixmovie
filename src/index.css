@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @layer base {
+  img {
+    @apply max-w-none;
+  }
+} */
+
+@layer components {
+  .btn-hover {
+    @apply hover:bg-gray-300;
+  }
+  .login_location_style {
+    @apply lg:text-gray-500 hover:text-red-600 lg:hover:text-gray-900 text-black;
+  }
+  .overlay_hover {
+    @apply invisible group-hover:visible duration-200 transition-all;
+  }
+  .btnTrailer {
+    @apply bg-transparent hover:bg-green-500 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded;
+  }
+  .btnMuaVeFilm {
+    @apply bg-transparent hover:bg-red-500 text-red-500 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded;
+  }
+  .btnMenu {
+    @apply bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded;
+  }
+  .p_news_info {
+    @apply hover:text-red-500 cursor-pointer mt-2 font-bold text-lg;
+  }
+  .p_news_info_list {
+    @apply hover:text-red-500 cursor-pointer mt-2 font-semibold text-sm text-gray-400;
+  }
+}

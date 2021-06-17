@@ -1,0 +1,12 @@
+.select-custom {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.select-custom:focus,
+.select-custom:hover {
+  outline: none;
+}
+.select-custom::after {
+  background-color: brown;
+  outline: none;
+}

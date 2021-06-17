@@ -1,0 +1,28 @@
+.movie_ageTypeC {
+  background-color: #fb4226;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 0 5px;
+  color: #fff;
+  min-width: 33px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 8px;
+  bottom: 4%;
+  left: 2%;
+  font-weight: 700;
+}
+.movie_ageTypeP {
+  background-color: #00ac4d;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 0 5px;
+  color: #fff;
+  min-width: 33px;
+  text-align: center;
+  display: inline-block;
+  margin-right: 8px;
+  bottom: 4%;
+  left: 2%;
+  font-weight: 700;
+}

@@ -1,0 +1,55 @@
+.mainCarousel .ant-carousel .slick-dots li button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.mainCarousel .ant-carousel .slick-dots-bottom {
+  bottom: 15%;
+}
+.mainCarousel .ant-carousel .slick-dots li.slick-active button {
+  background-color: rgb(170, 29, 29);
+}
+.mainCarousel .ant-carousel {
+  position: relative;
+}
+.mainCarousel .ant-carousel .slick-slider {
+  overflow: hidden;
+}
+.mainCarousel .ant-carousel .slick-arrow {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  width: 50px;
+  height: 100px;
+  z-index: 10;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+/* .mainCarousel .ant-carousel .slick-arrow:hover {
+  background-color: red;
+} */
+.mainCarousel .ant-carousel .slick-prev {
+  background-image: url("../../img/Carousel/back-session.png");
+  left: 12px;
+}
+.mainCarousel .ant-carousel .slick-prev::before {
+  content: none;
+}
+.mainCarousel .ant-carousel .slick-next::before {
+  content: none;
+}
+.mainCarousel .ant-carousel .slick-next {
+  background-image: url("../../img/Carousel/next-session.png");
+  right: 12px;
+}
+
+.btn_playtrailer {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
