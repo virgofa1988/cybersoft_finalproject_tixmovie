@@ -12,7 +12,7 @@ export default function Marketing() {
               Ứng dụng tiện lợi dành cho <br />
               người yêu điện ảnh
             </h1>
-            <p className="mkt_top_p1 text-sm md:text-xl text-center">
+            <p className="mkt_top_p1 my-10 text-sm md:text-xl text-center">
               Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp và
               đổi quà hấp dẫn.
             </p>
@@ -23,7 +23,7 @@ export default function Marketing() {
               <span className="mkt_top_span">App miễn phí - Tải về ngay</span>
             </a>
 
-            <p className="mkt_top_p2 text-sm md:text-xl text-center mt-2">
+            <p className="mkt_top_p2 text-sm md:text-xl text-center mt-10">
               TIX có hai phiên bản <a href="">iOS</a> & <a href="">Android</a>
             </p>
           </div>
