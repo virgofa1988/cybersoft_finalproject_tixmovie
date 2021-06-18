@@ -7,7 +7,7 @@ export default function Marketing() {
     <div className="Mkt_container my-10">
       <div className="Marketing_Container_1 ">
         <div className="Marketing_Container_2 md:grid md:grid-cols-2 my-2">
-          <div className="Marketing_top text-white">
+          <div className="Marketing_top text-white m-auto">
             <h1 className="mkt_top_h1 text-xl md:text-3xl text-center">
               Ứng dụng tiện lợi dành cho <br />
               người yêu điện ảnh
