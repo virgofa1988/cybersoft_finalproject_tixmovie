@@ -1,0 +1,45 @@
+.Mkt_container {
+  background-image: url("https://cybersoft-movie-phutran.web.app/static/media/backapp.5de6f656.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.Marketing_Container_1 {
+  padding: 120px 0;
+}
+.Marketing_Container_2 {
+  margin: 0 10%;
+}
+.Marketing_bottom .IphoneX {
+  padding: 0 27%;
+}
+.Mkt_Slider {
+  padding: 0 28%;
+}
+.Mkt_Slider .mtk_slider_img {
+  border-radius: 20px;
+}
+
+.Marketing_top .mkt_top_h1 {
+  line-height: 56px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  /* font-size: 32px; */
+  color: #fff;
+  letter-spacing: normal;
+}
+.Marketing_bottom .ant-carousel .slick-dots {
+  display: none !important;
+}
+
+.Marketing_top .mkt_top_a {
+  background-color: #fb4226;
+  padding: 2% 3%;
+  color: #fff;
+  font-weight: 700;
+  max-width: 80%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.Marketing_top .mkt_top_a .mkt_top_span {
+  line-height: 2rem;
+}

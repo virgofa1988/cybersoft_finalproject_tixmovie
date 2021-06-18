@@ -5,6 +5,7 @@ import MainCarousel from "../../components/MainCarousel/MainCarousel";
 import MovieSchedule from "../../components/MovieSchedule/MovieSchedule";
 import MovieSlider from "../../components/Movie_Slider/MovieSlider";
 import News from "../../components/News/News";
+import Marketing from "../../components/Marketing/Marketing";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <MovieSlider />
       <MovieSchedule />
       <News />
+      <Marketing />
     </div>
   );
 }

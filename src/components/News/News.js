@@ -30,6 +30,15 @@ export default function News() {
             <Khuyenmai />
           </TabPane>
         </Tabs>
+        <div className="flex justify-center my-3">
+          <a
+            href="https://zingnews.vn/phim-anh.html"
+            target="_blank"
+            className="btnMuaVeFilm "
+          >
+            Xem Thêm
+          </a>
+        </div>
       </div>
     </section>
   );
