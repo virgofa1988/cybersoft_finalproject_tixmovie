@@ -4,7 +4,7 @@ import { Carousel } from "antd";
 
 export default function Marketing() {
   return (
-    <div className="Mkt_container my-10">
+    <div className="Mkt_container mt-10">
       <div className="Marketing_Container_1 ">
         <div className="Marketing_Container_2 md:grid md:grid-cols-2 my-2">
           <div className="Marketing_top text-white m-auto">
@@ -23,8 +23,15 @@ export default function Marketing() {
               <span className="mkt_top_span">App miễn phí - Tải về ngay</span>
             </a>
 
-            <p className="mkt_top_p2 text-sm md:text-xl text-center mt-10">
-              TIX có hai phiên bản <a href="">iOS</a> & <a href="">Android</a>
+            <p className="mkt_top_p2 text-sm md:text-xl text-center mt-10 ">
+              TIX có hai phiên bản{" "}
+              <a href="" className="underline text-white">
+                iOS
+              </a>{" "}
+              &{" "}
+              <a className="underline text-white" href="">
+                Android
+              </a>
             </p>
           </div>
           <div className="Marketing_bottom text-white relative">

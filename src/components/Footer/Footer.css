@@ -1,0 +1,41 @@
+.footer_container {
+  background-color: #222;
+}
+.footer_section {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.footer_mobile_top_left_list {
+  color: #949494;
+}
+.footer_mobile_top_left_list li:hover {
+  color: white;
+  cursor: pointer;
+}
+.bottom_left_img {
+  height: 40px;
+  width: auto;
+}
+.footer_mobile_bottom_left,
+.footer_mobile_bottom_right {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.doiTacList .doiTacListrow a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.doiTacList .doiTacListrow a {
+  margin: 0 2%;
+}
+.doiTacList .doiTacListrow {
+  justify-content: center;
+}

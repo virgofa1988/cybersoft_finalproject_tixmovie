@@ -6,6 +6,7 @@ import MovieSchedule from "../../components/MovieSchedule/MovieSchedule";
 import MovieSlider from "../../components/Movie_Slider/MovieSlider";
 import News from "../../components/News/News";
 import Marketing from "../../components/Marketing/Marketing";
+import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <MovieSchedule />
       <News />
       <Marketing />
+      <Footer />
     </div>
   );
 }
