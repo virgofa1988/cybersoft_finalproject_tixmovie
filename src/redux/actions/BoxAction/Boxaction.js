@@ -3,6 +3,7 @@ import {
   BOX_LIST,
   BOX_LIST_DETAIL,
   MOVIE_LIST_DETAIL,
+  TICKET_BOX_DETAIL,
 } from "../../constants/Constants";
 import { BOX_LIST_API } from "../../DomainAPI/domainAPI";
 
@@ -38,6 +39,25 @@ export const getMovieSchedule = (maHeThongRap) => {
       dispatch({
         type: MOVIE_LIST_DETAIL,
         movieListSchedule: result.data[0],
+      });
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};
+
+//Get Chi Tiet Phong Ve Theo maLichChieu
+export const getAPITicketBox = (maLichChieu) => {
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
+        method: "GET",
+      });
+      // console.log(result.data);
+      dispatch({
+        type: TICKET_BOX_DETAIL,
+        tickKetBoxDetail: result.data,
       });
     } catch (err) {
       console.log(err.response?.data);

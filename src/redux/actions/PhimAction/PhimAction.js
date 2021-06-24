@@ -9,7 +9,7 @@ export const getAPIFilmDetail = (maPhim) => {
         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
         method: "GET",
       });
-      console.log(result);
+      // console.log(result);
       dispatch({
         type: getFilmDetail,
         PhimDetail: result.data,

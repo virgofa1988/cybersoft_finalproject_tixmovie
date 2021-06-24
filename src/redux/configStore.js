@@ -5,6 +5,7 @@ import { FilmDetailReducer } from "./FilmDetail/FilmDetailReducer";
 import { HomeToolReducer } from "./HomeTool/HomeToolReducer";
 import { MovieScheduleReducer } from "./MovieSchedule/MovieScheduleReducer";
 import { MobileFilmListReducer } from "./SlickCarouselMobile/SlickCarouselMobile";
+import { TicketReducer } from "./TicketReducer/TicketReducer";
 import { UserReducer } from "./User/userReducer";
 
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   FilmDetailReducer: FilmDetailReducer,
   UserReducer: UserReducer,
   MovieScheduleReducer: MovieScheduleReducer,
+  TicketReducer: TicketReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(reduxThunk));

@@ -8,6 +8,7 @@ import Signup from "./pages/Signup/Signup";
 import { createBrowserHistory } from "history";
 import Userinfo from "./pages/Userinfo/Userinfo";
 import UserinfoLayout from "./pages/Userinfo/UserinfoLayout";
+import Phongve from "./pages/PhongVe/Phongve";
 
 export const history = createBrowserHistory(); //export để các nơi cần điều hướng có thể  xử dụng history.push("path")
 
@@ -19,7 +20,7 @@ function App() {
           {/* Set trang chủ */}
           <Route path="/login" exact component={Login}></Route>
           <Route path="/signup" exact component={Signup}></Route>
-
+          <Route path="/chitietphongve/:id" exact component={Phongve}></Route>
           <Route path="/userinfo" exact component={Userinfo}></Route>
           <Route path="/filmdetail/:id" exact component={FilmDetail}></Route>
           <Route path="/" exact component={Home}></Route>

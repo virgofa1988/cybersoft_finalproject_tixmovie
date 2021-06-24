@@ -21,3 +21,4 @@ export const BOX_LIST_DETAIL = "boxListDetail";
 export const MOVIE_LIST_DETAIL = "movieListDetail";
 export const MOVIE_LIST_BASE_BOX = "movieListBaseBox";
 export const BOX_CODE = "boxCode";
+export const TICKET_BOX_DETAIL = "ticketBoxDetail";

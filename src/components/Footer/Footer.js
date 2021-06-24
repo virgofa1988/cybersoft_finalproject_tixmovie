@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer_container py-5 text-white">
       <div className="footer_section">
-        <div className="footer_mobile_top flex flex-row">
+        <div className="footer_mobile_top lg:px-52 flex flex-row">
           <div className="footer_mobile_top_left w-1/2 md:w-1/3 flex flex-col md:flex-row flex-wrap  text-center md:text-left">
             <p className="w-full">TIX</p>
             <div className="footer_mobile_top_left_left md:w-1/2">
@@ -121,7 +121,7 @@ export default function Footer() {
               >
                 <img
                   className="bottom_left_img"
-                  src="./img/Apple.png"
+                  src="../../img/Apple.png" //.. Đầu là ra khỏi folder Footer, cái tiếp theo ra khỏi folder "Component"
                   alt="applestore"
                 />
               </a>
@@ -132,7 +132,7 @@ export default function Footer() {
               >
                 <img
                   className="bottom_left_img"
-                  src="./img/GoogleStore.png"
+                  src="../../img/GoogleStore.png"
                   alt="GoogleStore"
                 />
               </a>
@@ -147,7 +147,7 @@ export default function Footer() {
               >
                 <img
                   className="bottom_left_img"
-                  src="./img/facebook.png"
+                  src="../../img/facebook.png"
                   alt="facebook"
                 />
               </a>
@@ -158,7 +158,7 @@ export default function Footer() {
               >
                 <img
                   className="bottom_left_img"
-                  src="./img/zalo.png"
+                  src="../../img/zalo.png"
                   alt="zalo"
                 />
               </a>
@@ -166,7 +166,40 @@ export default function Footer() {
           </div>
         </div>
         <hr style={{ opacity: "0.2" }} className="my-3" />
-        <div className="footer_mobile_bottom "></div>
+        <div className="footer_mobile_bottom text-center">
+          <div className="footer_mobile_bottom_left">
+            <div className="zion_picture my-2">
+              <img width="80px" src="./img/zion.jpg" alt="zion" />
+            </div>
+            <div className="tix_contact">
+              <h3 className="text-white">
+                TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION
+              </h3>
+              <p>
+                Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ
+                Chí Minh, Việt Nam.
+              </p>
+              <p>
+                Giấy chứng nhận đăng ký kinh doanh số: 0101659783, <br /> đăng
+                ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở kế hoạch
+                và đầu tư Thành phố Hồ Chí Minh
+              </p>
+              <p>
+                Số Điện Thoại (Hotline): 1900 545 436 <br /> Email:{" "}
+                <a href="emailto:support@tix.vn" className="text-red-600">
+                  support@tix.vn
+                </a>
+              </p>
+            </div>
+          </div>
+          <div className="footer_mobile_bottom_right">
+            <img
+              width="130px"
+              src="https://cybersoft-movie-phutran.web.app/static/media/confirm.f3d3b02c.png"
+              alt="boCongThuong"
+            />
+          </div>
+        </div>
       </div>
     </footer>
   );

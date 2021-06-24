@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/Header/Header";
-
+import Footer from "../../components/Footer/Footer";
+import Movieschedule_filmdetail from "../../components/MovieSchedule_FilmDetail/Movieschedule_filmdetail";
 import { getAPIFilmDetail } from "../../redux/actions/PhimAction/PhimAction";
 import "./Filmdetail.css";
 
@@ -14,7 +15,7 @@ export default function FilmDetail(props) {
   //Call API to get FilmDetail from Server and dispatch to Redux- khi componentDidmount
   useEffect(() => {
     dispatch(getAPIFilmDetail(maPhimURL));
-    console.log(FilmDetail);
+    // console.log(FilmDetail);
   }, []);
   //Sau khi callAPI từ Action, action sẽ lấy data và dispatch lên Reducer, mình sử dụng useSelector để lấy state về binding dữ liệu
   const FilmDetail = useSelector((state) => state.FilmDetailReducer.PhimDetail);
@@ -125,6 +126,8 @@ export default function FilmDetail(props) {
           </div>
         </div>
       </div>
+      <Movieschedule_filmdetail filmdetail={FilmDetail} />
+      <Footer />
     </Fragment>
   );
 }

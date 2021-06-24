@@ -1,0 +1,10 @@
+.movieScheduleFilmDetail {
+  background: linear-gradient(to Bottom, rgb(10, 32, 41), #000000a6);
+}
+
+.movieScheduleFilmDetail .ant-tabs-content-holder .ant-tabs-tabpane {
+  padding-left: 0 !important;
+}
+.movieScheduleFilmDetail_desktop .ant-tabs {
+  background-color: #fff;
+}
