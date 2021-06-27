@@ -21,6 +21,11 @@
   align-items: center;
   height: 100%;
 }
+.PhongVe_Header_Detail_DatVe_Mobile {
+  display: none;
+  height: 100%;
+  align-items: center;
+}
 .PhongVe_Header_Detail_UserInfo {
   align-items: center;
   cursor: pointer;
@@ -58,6 +63,7 @@
   right: 0;
   background: #fff;
   box-shadow: 0 0 15px rgb(0 0 0 / 30%);
+  transition: all 0.3s ease;
 }
 .PhongVe_SideBar_Info {
   padding: 0 5%;
@@ -381,13 +387,45 @@
   width: 100%;
   justify-content: center;
   text-align: center;
-  grid-gap: 7px;
 }
 .PhongVe_DayGhe_Ghe .DayGhe_Container .gheBTN {
-  border-radius: 20%;
+  border-radius: 5%;
   outline: none;
   color: white;
   font-weight: 600;
-  width: 40px;
-  padding: 4px;
+  width: 100%;
+  padding: 3px;
+}
+/* Add the :horizontal scroll-bar for div when shrinking */
+.PhongVe_DayGhe_GheInfo {
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.PhongVe_DayGhe_GheInfo img {
+  width: 100%;
+}
+.PhongVe_DayGhe_GheInfo .GheInfo_soGhe {
+  position: absolute;
+  top: -2px;
+  left: 15px;
+  font-size: 12px;
+  color: white;
+  font-family: emoji;
+}
+
+/* Mobile Screen */
+
+@media only screen and (max-width: 768px) {
+  .PhongVe_SideBar {
+    transform: translateX(100%);
+  }
+  .PhongVe_Content {
+    width: 100%;
+  }
+  .PhongVe_Header_Detail_DatVe {
+    display: none;
+  }
+  .PhongVe_Header_Detail_DatVe_Mobile {
+    display: block;
+  }
 }

@@ -22,3 +22,6 @@ export const MOVIE_LIST_DETAIL = "movieListDetail";
 export const MOVIE_LIST_BASE_BOX = "movieListBaseBox";
 export const BOX_CODE = "boxCode";
 export const TICKET_BOX_DETAIL = "ticketBoxDetail";
+
+//Phong Ve
+export const CHON_GHE = "chonGhe";

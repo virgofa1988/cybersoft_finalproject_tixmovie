@@ -3,27 +3,48 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAPITicketBox } from "../../redux/actions/BoxAction/Boxaction";
 import "./Phongve.css";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
+import { CHON_GHE } from "../../redux/constants/Constants";
 
 export default function Phongve(props) {
   const maLichChieu = props.match.params.id;
   const dispatch = useDispatch();
+  // let isGheChosed = true;
+  const danhSachGhe = useSelector((state) => state.TicketReducer?.danhSachGhe);
+
+  const DayGheChon = useSelector((state) => state.TicketReducer?.DayGheChon);
+  const TongTienVe = useSelector((state) => state.TicketReducer?.TongTienVe);
+
   useEffect(() => {
     dispatch(getAPITicketBox(maLichChieu));
   }, []);
 
   let [isGheChosed, setGheState] = useState(false);
-  // let isGheChosed = true;
-  const danhSachGhe = useSelector((state) => state.TicketReducer?.danhSachGhe);
+
   const thongTinPhim = useSelector(
     (state) => state.TicketReducer?.thongTinPhim
   );
-  console.log(danhSachGhe);
-  console.log(thongTinPhim);
+  // console.log(danhSachGhe);
+  // console.log(thongTinPhim);
+
+  //Xử lý hàm chọn ghế
+  const chonGhe = (ghe) => {
+    // console.log(soGhe);
+    dispatch({
+      type: CHON_GHE,
+      ghe: ghe,
+    });
+  };
+
   return (
     <div className="PhongVe_Container">
       <div className="PhongVe_Header">
         <div className="PhongVe_Header_Info">
           <div className="PhongVe_Header_Detail">
+            <div className="PhongVe_Header_Detail_DatVe_Mobile">
+              <p className="uppercase">
+                <span className="mx-1 text-lg">01</span>Chọn ghế
+              </p>
+            </div>
             <div className="PhongVe_Header_Detail_DatVe">
               <p className="uppercase">
                 <span className="mx-1 text-lg">01</span>Chọn ghế & Thanh Toán
@@ -56,7 +77,7 @@ export default function Phongve(props) {
         <div className="PhongVe_SideBar_Info">
           {/* Thông Tin Tổng Tiền Vé */}
           <div className="SideBar_Infor SideBar_Infor_TotalPrice">
-            <p>0 đ</p>
+            <p>{TongTienVe.toLocaleString()} đ</p>
           </div>
 
           {/* Thông Tin Về Rạp Chiếu */}
@@ -71,8 +92,13 @@ export default function Phongve(props) {
 
           {/* Thông Tin Ghế Đặt */}
           <div className="SideBar_Infor SideBar_Infor_Ghe">
-            <span>Ghế</span>
-            <span>0 đ</span>
+            <span className="flex flex-wrap">
+              Ghế:{""}
+              {DayGheChon.map((ghe, index) => {
+                return <p key={index}> {ghe},</p>;
+              })}{" "}
+            </span>
+            <span>{TongTienVe.toLocaleString()} đ</span>
           </div>
 
           {/* Thông Tin Combo */}
@@ -81,7 +107,7 @@ export default function Phongve(props) {
               <img src="../../img/Combo.png" alt="ComboLogo" />
               Chọn Combo
             </span>
-            <span>0 đ</span>
+            <span>0đ</span>
           </div>
 
           {/* Thẻ form email */}
@@ -300,23 +326,49 @@ export default function Phongve(props) {
                 <div className="PhongVe_DayGhe_GheInfo">
                   <img src="../img/screen.png" alt="screen" />
                   <div className="PhongVe_DayGhe_Ghe">
-                    <div className="DayGhe_Container grid grid-cols-12">
+                    <div className="DayGhe_Container flex flex-wrap">
                       {danhSachGhe.map((ghe, index) => {
+                        let gheThuongStyle = "";
+                        let gheVipStyle = "";
+                        {
+                          if (ghe.daDat) {
+                            gheVipStyle = `fas fa-couch text-green-600 text-3xl`;
+                            gheThuongStyle = `fas fa-couch text-green-600 text-3xl`;
+                          } else {
+                            gheVipStyle = `fas fa-couch text-yellow-600 text-3xl`;
+                            gheThuongStyle = `fas fa-couch text-gray-600 text-3xl`;
+                          }
+                        }
+
                         return (
-                          <div className="col-span-1">
+                          <div className="DayGhe_Ghe ">
                             {ghe.loaiGhe === "Thuong" ? (
                               <button
-                                className="bg-gray-600 gheBTN"
+                                onClick={() => {
+                                  chonGhe(ghe);
+                                }}
+                                className=" gheBTN relative"
                                 key={index}
                               >
-                                {ghe.tenGhe}
+                                <i className={gheThuongStyle}>
+                                  <span className="GheInfo_soGhe">
+                                    {ghe.tenGhe}
+                                  </span>
+                                </i>
                               </button>
                             ) : (
                               <button
-                                className="bg-yellow-600 gheBTN gheVIP"
+                                onClick={() => {
+                                  chonGhe(ghe);
+                                }}
+                                className=" gheBTN gheVIP relative"
                                 key={index}
                               >
-                                {ghe.tenGhe}
+                                <i className={gheVipStyle}>
+                                  <span className="GheInfo_soGhe">
+                                    {ghe.tenGhe}
+                                  </span>
+                                </i>
                               </button>
                             )}
                           </div>
