@@ -33,4 +33,7 @@
   .p_news_info_list {
     @apply hover:text-red-500 cursor-pointer mt-2 font-semibold text-sm text-gray-400;
   }
+  .rateC {
+    @apply bg-red-500 font-semibold text-center text-sm px-1 leading-6 text-white p-1 rounded-sm;
+  }
 }

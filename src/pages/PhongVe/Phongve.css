@@ -338,17 +338,17 @@
 /* ################CSS PhongVe_Content */
 .PhongVe_Content {
   position: relative;
-  height: 100vh;
+
   width: 75%;
 }
 .PhongVe_Content_Container {
   width: 100%;
-  height: 100%;
+
   display: flex;
 }
 .PhongVe_ExitWay {
   width: 7%;
-  height: 100%;
+
   background: rgba(0, 0, 0, 0.7);
 }
 .PhongVe_Content_Container .PhongVe_DayGhe {
@@ -428,4 +428,18 @@
   .PhongVe_Header_Detail_DatVe_Mobile {
     display: block;
   }
+}
+/* Styling Div Thông Tin Loại Ghế */
+.PhongVe_DayGhe_LoaiGhe {
+  text-align: center;
+}
+.PhongVe_DayGhe_LoaiGhe .LoaiGhe_Wrapper {
+  max-width: 550px;
+  margin: 0 auto;
+  gap: 2px;
+  border-top: 1px dotted rgba(0, 0, 0, 0.212);
+  padding-top: 10px;
+}
+.PhongVe_DayGhe_LoaiGhe .LoaiGhe_Wrapper .DayGhe_Ghe p {
+  color: rgba(128, 128, 128, 0.7);
 }

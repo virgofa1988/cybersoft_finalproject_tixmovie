@@ -4,34 +4,35 @@ import { getAPITicketBox } from "../../redux/actions/BoxAction/Boxaction";
 import "./Phongve.css";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { CHON_GHE } from "../../redux/constants/Constants";
+import { MyDate } from "../../components/Date/Date";
+
+const currentDate = new Date();
 
 export default function Phongve(props) {
   const maLichChieu = props.match.params.id;
   const dispatch = useDispatch();
-  // let isGheChosed = true;
-  const danhSachGhe = useSelector((state) => state.TicketReducer?.danhSachGhe);
 
+  const danhSachGhe = useSelector((state) => state.TicketReducer?.danhSachGhe);
   const DayGheChon = useSelector((state) => state.TicketReducer?.DayGheChon);
   const TongTienVe = useSelector((state) => state.TicketReducer?.TongTienVe);
-
+  const thongTinPhim = useSelector(
+    (state) => state.TicketReducer?.thongTinPhim
+  );
   useEffect(() => {
     dispatch(getAPITicketBox(maLichChieu));
   }, []);
 
-  let [isGheChosed, setGheState] = useState(false);
-
-  const thongTinPhim = useSelector(
-    (state) => state.TicketReducer?.thongTinPhim
-  );
   // console.log(danhSachGhe);
-  // console.log(thongTinPhim);
+  console.log(thongTinPhim);
 
   //Xử lý hàm chọn ghế
   const chonGhe = (ghe) => {
     // console.log(soGhe);
+    //Add property isChosing to check if user is chosing Ghe
+    const chosingGhe = { ...ghe, isChosing: false };
     dispatch({
       type: CHON_GHE,
-      ghe: ghe,
+      chosingGhe: chosingGhe,
     });
   };
 
@@ -62,13 +63,6 @@ export default function Phongve(props) {
                 />
               </div>
               <span>User Account</span>
-              <button
-                onClick={() => {
-                  setGheState(!isGheChosed);
-                }}
-              >
-                Click to Test
-              </button>
             </div>
           </div>
         </div>
@@ -83,11 +77,15 @@ export default function Phongve(props) {
           {/* Thông Tin Về Rạp Chiếu */}
           <div className="SideBar_Infor SideBar_Infor_RapChieu">
             <div>
-              <span>C18</span>
-              <span>Home</span>
+              <span className="rateC">C18</span>
+              <span className="font-semibold text-lg ml-2">
+                {thongTinPhim.tenPhim}
+              </span>
             </div>
-            <p>CGV - Aeon Bình Tân</p>
-            <p>23/6/2021 - 12:01 - Rạp 4</p>
+            <p>{thongTinPhim.tenCumRap}</p>
+            <p>
+              {MyDate(currentDate)} - {thongTinPhim.tenRap}
+            </p>
           </div>
 
           {/* Thông Tin Ghế Đặt */}
@@ -145,7 +143,7 @@ export default function Phongve(props) {
             <label className="label-name" for="maGiamGia">
               <span className="content-name">Mã giảm giá</span>
             </label>
-            {isGheChosed ? (
+            {DayGheChon.length !== 0 ? (
               <button style={{ backgroundColor: "#4cb050" }}>
                 <span>Áp dụng</span>
               </button>
@@ -159,7 +157,7 @@ export default function Phongve(props) {
           {/* Dịch Vụ Thanh Toán */}
           <div className="SideBar_Infor SideBar_Infor_Payment mb-10">
             <p className="italic text-gray-600 mt-4">Hình thức thanh toán</p>
-            {isGheChosed ? (
+            {DayGheChon.length !== 0 ? (
               <div className="Payment_Option_Container w-full">
                 <div className="Payment_Option_Wrapper animate-animated animate__bounceInRight">
                   {/* Zalo */}
@@ -282,7 +280,7 @@ export default function Phongve(props) {
           </div>
         </div>
         <div className="PhongVe_SideBar_Btn">
-          {isGheChosed ? (
+          {DayGheChon.length !== 0 ? (
             <button
               className="SideBar_Btn "
               style={{
@@ -314,8 +312,8 @@ export default function Phongve(props) {
                       alt="CGV"
                     />
                     <div className="RapInfo_Rap_Detail">
-                      <p>Thông Tin Rạp Ở Đây</p>
-                      <p>Giờ Chiếu Rạp Ở Đây</p>
+                      <p>{thongTinPhim.tenRap}</p>
+                      <p>{thongTinPhim.ngayChieu}</p>
                     </div>
                   </div>
                   <div className="RapInfo_Time">
@@ -328,56 +326,102 @@ export default function Phongve(props) {
                   <div className="PhongVe_DayGhe_Ghe">
                     <div className="DayGhe_Container flex flex-wrap">
                       {danhSachGhe.map((ghe, index) => {
-                        let gheThuongStyle = "";
-                        let gheVipStyle = "";
-                        {
-                          if (ghe.daDat) {
-                            gheVipStyle = `fas fa-couch text-green-600 text-3xl`;
-                            gheThuongStyle = `fas fa-couch text-green-600 text-3xl`;
-                          } else {
-                            gheVipStyle = `fas fa-couch text-yellow-600 text-3xl`;
-                            gheThuongStyle = `fas fa-couch text-gray-600 text-3xl`;
-                          }
-                        }
-
-                        return (
-                          <div className="DayGhe_Ghe ">
-                            {ghe.loaiGhe === "Thuong" ? (
+                        if (ghe.daDat) {
+                          return (
+                            <div className="DayGhe_Ghe">
                               <button
-                                onClick={() => {
-                                  chonGhe(ghe);
-                                }}
                                 className=" gheBTN relative"
                                 key={index}
+                                disabled
+                                style={{ cursor: "not-allowed" }}
                               >
-                                <i className={gheThuongStyle}>
+                                <i className="fas fa-couch text-gray-200 text-3xl">
                                   <span className="GheInfo_soGhe">
                                     {ghe.tenGhe}
                                   </span>
                                 </i>
                               </button>
-                            ) : (
-                              <button
-                                onClick={() => {
-                                  chonGhe(ghe);
-                                }}
-                                className=" gheBTN gheVIP relative"
-                                key={index}
-                              >
-                                <i className={gheVipStyle}>
-                                  <span className="GheInfo_soGhe">
-                                    {ghe.tenGhe}
-                                  </span>
-                                </i>
-                              </button>
-                            )}
-                          </div>
-                        );
+                            </div>
+                          );
+                        } else {
+                          let gheThuongStyle = "";
+                          let gheVipStyle = "";
+                          {
+                            if (ghe.chosingGhe) {
+                              gheVipStyle = `fas fa-couch text-green-600 text-3xl`;
+                              gheThuongStyle = `fas fa-couch text-green-600 text-3xl`;
+                            } else {
+                              gheVipStyle = `fas fa-couch text-yellow-600 text-3xl`;
+                              gheThuongStyle = `fas fa-couch text-gray-600 text-3xl`;
+                            }
+                          }
+
+                          return (
+                            <div className="DayGhe_Ghe ">
+                              {ghe.loaiGhe === "Thuong" ? (
+                                <button
+                                  onClick={() => {
+                                    chonGhe(ghe);
+                                  }}
+                                  className=" gheBTN relative"
+                                  key={index}
+                                >
+                                  <i className={gheThuongStyle}>
+                                    <span className="GheInfo_soGhe">
+                                      {ghe.tenGhe}
+                                    </span>
+                                  </i>
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={() => {
+                                    chonGhe(ghe);
+                                  }}
+                                  className=" gheBTN gheVIP relative"
+                                  key={index}
+                                >
+                                  <i className={gheVipStyle}>
+                                    <span className="GheInfo_soGhe">
+                                      {ghe.tenGhe}
+                                    </span>
+                                  </i>
+                                </button>
+                              )}
+                            </div>
+                          );
+                        }
                       })}
                     </div>
                   </div>
                 </div>
-                <div className="PhongVe_DayGhe_LoaiGhe"></div>
+                <div className="PhongVe_DayGhe_LoaiGhe">
+                  <div className="LoaiGhe_Wrapper grid grid-cols-2 md:grid-cols-4">
+                    <div className="DayGhe_Ghe">
+                      <button className="gheBTN" disabled>
+                        <i className="fas fa-couch text-gray-200 text-2xl"></i>
+                      </button>
+                      <p>Ghế đã đặt</p>
+                    </div>
+                    <div className="DayGhe_Ghe">
+                      <button className="gheBTN" disabled>
+                        <i className="fas fa-couch text-yellow-600 text-2xl"></i>
+                      </button>
+                      <p>Ghế VIP</p>
+                    </div>
+                    <div className="DayGhe_Ghe">
+                      <button className="gheBTN" disabled>
+                        <i className="fas fa-couch text-gray-600 text-2xl"></i>
+                      </button>
+                      <p>Ghế thường</p>
+                    </div>
+                    <div className="DayGhe_Ghe">
+                      <button className="gheBTN" disabled>
+                        <i className="fas fa-couch text-green-600 text-2xl"></i>
+                      </button>
+                      <p>Ghế đang chọn</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

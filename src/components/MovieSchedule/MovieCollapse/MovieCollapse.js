@@ -5,6 +5,7 @@ import { CalendarOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
 import { memo } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 const { Panel } = Collapse;
 
 export const MovieCollapse = memo((props) => {
@@ -60,12 +61,15 @@ export const MovieCollapse = memo((props) => {
                         key={index}
                         className="Content_Time_Inside_Box flex-grow-0 max-w-1/4 flex "
                       >
-                        <a className="Time_Link" href="#">
+                        <Link
+                          className="Time_Link"
+                          to={`/chitietphongve/${ngay.maLichChieu}`}
+                        >
                           <CalendarOutlined />
                           <span className="__time ml-2">
                             {ngay.ngayChieuGioChieu.substr(11, 5)}
                           </span>
-                        </a>
+                        </Link>
                       </div>
                     );
                   })}

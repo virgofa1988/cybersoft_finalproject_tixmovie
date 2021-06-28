@@ -33,27 +33,29 @@ export const TicketReducer = (state = initialState, action) => {
 
       //Thay Đổi Trạng Thái Đã Đặt Của Ghế
       let updateDanhSachGhe = [...state.danhSachGhe];
+
+      // console.log("Update Danh Sach Ghe isChosing", updateDanhSachGhe);
       const index = updateDanhSachGhe.findIndex(
-        (ghe) => ghe.maGhe === action.ghe.maGhe
+        (ghe) => ghe.maGhe === action.chosingGhe.maGhe
       );
-      if (index !== -1 && updateDanhSachGhe[index].daDat === true) {
-        updateDanhSachGhe[index].daDat = false;
+      if (index !== -1 && updateDanhSachGhe[index].chosingGhe === true) {
+        updateDanhSachGhe[index].chosingGhe = false;
       } else {
-        updateDanhSachGhe[index].daDat = true;
+        updateDanhSachGhe[index].chosingGhe = true;
       }
       state.danhSachGhe = updateDanhSachGhe;
-      console.log(state.danhSachGhe);
+      // console.log(state.danhSachGhe);
 
       //Đưa ghế chọn vào mảng danhSachGheChon
       const index_1 = state.danhSachGheChon.findIndex(
-        (ghe) => ghe.maGhe === action.ghe.maGhe
+        (ghe) => ghe.maGhe === action.chosingGhe.maGhe
       );
       if (index_1 !== -1) {
         state.danhSachGheChon.splice(index_1, 1);
         state.DayGheChon.splice(index_1, 1);
       } else {
-        state.danhSachGheChon.push(action.ghe);
-        state.DayGheChon.push(action.ghe.tenGhe);
+        state.danhSachGheChon.push(action.chosingGhe);
+        state.DayGheChon.push(action.chosingGhe.tenGhe);
       }
 
       //Tính Tổng Tiền Vé
