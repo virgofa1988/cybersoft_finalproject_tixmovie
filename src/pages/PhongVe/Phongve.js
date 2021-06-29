@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPITicketBox } from "../../redux/actions/BoxAction/Boxaction";
 import "./Phongve.css";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { CHON_GHE } from "../../redux/constants/Constants";
 import { MyDate } from "../../components/Date/Date";
+import CountDown_Timer from "../../components/CountDown_Timer/CountDown_Timer";
 
 const currentDate = new Date();
 
 export default function Phongve(props) {
   const maLichChieu = props.match.params.id;
   const dispatch = useDispatch();
+  //State này giúp force to render Phong Ve Component, sau khi thời gian giữ vé đã hết. Và được pass vào CountDown_Timer thông qua hàm forceRenderPhongVe and và được gọi ở TImerModal sau khi tắt thông báo.
+  //Mục đích của việc render lại là để clear hết các reducer store có chứa các thông tin vé đặt, tổng tiền trở lại trạng thái ban đầu
+  let [bookingTime, setBookingTime] = useState(false);
 
   const danhSachGhe = useSelector((state) => state.TicketReducer?.danhSachGhe);
   const DayGheChon = useSelector((state) => state.TicketReducer?.DayGheChon);
@@ -18,12 +22,13 @@ export default function Phongve(props) {
   const thongTinPhim = useSelector(
     (state) => state.TicketReducer?.thongTinPhim
   );
+  // console.log("PhongVe");
+
   useEffect(() => {
     dispatch(getAPITicketBox(maLichChieu));
-  }, []);
-
+  }, [bookingTime]);
   // console.log(danhSachGhe);
-  console.log(thongTinPhim);
+  // console.log(thongTinPhim);
 
   //Xử lý hàm chọn ghế
   const chonGhe = (ghe) => {
@@ -34,6 +39,9 @@ export default function Phongve(props) {
       type: CHON_GHE,
       chosingGhe: chosingGhe,
     });
+  };
+  const forceRenderPhongVe = () => {
+    setBookingTime(!bookingTime);
   };
 
   return (
@@ -93,7 +101,7 @@ export default function Phongve(props) {
             <span className="flex flex-wrap">
               Ghế:{""}
               {DayGheChon.map((ghe, index) => {
-                return <p key={index}> {ghe},</p>;
+                return <p key={index}>, {ghe}</p>;
               })}{" "}
             </span>
             <span>{TongTienVe.toLocaleString()} đ</span>
@@ -279,6 +287,7 @@ export default function Phongve(props) {
             </p>
           </div>
         </div>
+        {/* Button Dat Ve */}
         <div className="PhongVe_SideBar_Btn">
           {DayGheChon.length !== 0 ? (
             <button
@@ -299,6 +308,7 @@ export default function Phongve(props) {
           )}
         </div>
       </div>
+      {/* Dãy ghế chính */}
       <div className="PhongVe_Content">
         <div className="PhongVe_Content_Container">
           <div className="PhongVe_ExitWay"> </div>
@@ -318,7 +328,10 @@ export default function Phongve(props) {
                   </div>
                   <div className="RapInfo_Time">
                     <span>Thời gian giữ ghế</span>
-                    <p>10:00</p>
+                    <CountDown_Timer
+                      maLichChieu={maLichChieu}
+                      forceRenderPhongVe={forceRenderPhongVe}
+                    />
                   </div>
                 </div>
                 <div className="PhongVe_DayGhe_GheInfo">
@@ -336,7 +349,7 @@ export default function Phongve(props) {
                                 style={{ cursor: "not-allowed" }}
                               >
                                 <i className="fas fa-couch text-gray-200 text-3xl">
-                                  <span className="GheInfo_soGhe">
+                                  <span className="GheInfo_soGhe ">
                                     {ghe.tenGhe}
                                   </span>
                                 </i>
@@ -348,11 +361,11 @@ export default function Phongve(props) {
                           let gheVipStyle = "";
                           {
                             if (ghe.chosingGhe) {
-                              gheVipStyle = `fas fa-couch text-green-600 text-3xl`;
-                              gheThuongStyle = `fas fa-couch text-green-600 text-3xl`;
+                              gheVipStyle = `fas fa-couch text-green-600 text-3xl isChosing`;
+                              gheThuongStyle = `fas fa-couch text-green-600 text-3xl isChosing`;
                             } else {
                               gheVipStyle = `fas fa-couch text-yellow-600 text-3xl`;
-                              gheThuongStyle = `fas fa-couch text-gray-600 text-3xl`;
+                              gheThuongStyle = `fas fa-couch text-gray-600 text-3xl `;
                             }
                           }
 

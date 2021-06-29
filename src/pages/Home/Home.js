@@ -7,6 +7,7 @@ import MovieSlider from "../../components/Movie_Slider/MovieSlider";
 import News from "../../components/News/News";
 import Marketing from "../../components/Marketing/Marketing";
 import Footer from "../../components/Footer/Footer";
+import Timer from "../../components/CountDown_Timer/CountDown_Timer";
 
 export default function Home() {
   return (

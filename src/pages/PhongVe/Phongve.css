@@ -409,10 +409,12 @@
   top: -2px;
   left: 15px;
   font-size: 12px;
-  color: white;
+  color: rgba(255, 255, 255, 0);
   font-family: emoji;
 }
-
+.DayGhe_Container .DayGhe_Ghe .gheBTN .isChosing span {
+  color: white;
+}
 /* Mobile Screen */
 
 @media only screen and (max-width: 768px) {
