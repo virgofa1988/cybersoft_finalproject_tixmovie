@@ -1,0 +1,43 @@
+:root {
+  --redLogin: #f44336dc;
+  --greyLater: #524e4e8a;
+}
+
+.btnModal {
+  display: inline-block;
+  background-color: var(--redLogin);
+  color: #ffffff;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 20px;
+  opacity: 0.9;
+}
+.btnModal:hover {
+  text-decoration: none;
+  color: white;
+  background-color: #f53527;
+}
+
+.btnModal button,
+.btnModalLater button {
+  outline: none;
+  border: none;
+}
+.btnModalLater {
+  display: inline-block;
+  background-color: var(--greyLater);
+  color: #ffffff;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 20px;
+  opacity: 0.9;
+
+  cursor: pointer;
+}
+.btnModalLater:hover {
+  background-color: #524e4eea;
+}

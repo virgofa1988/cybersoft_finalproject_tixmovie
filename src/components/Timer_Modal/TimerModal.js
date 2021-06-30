@@ -2,12 +2,11 @@ import React, { memo, useState } from "react";
 import { Modal, Button } from "antd";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAPITicketBox } from "../../redux/actions/BoxAction/Boxaction";
 
 const TimerModal = (props) => {
   const { notiText, triggerModal } = props.contents;
   // console.log("Modal");
-  const dispatch = useDispatch();
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {

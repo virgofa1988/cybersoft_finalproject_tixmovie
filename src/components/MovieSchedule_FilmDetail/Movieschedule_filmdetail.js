@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import "./Movieschedule_filmdetail.css";
 import { Tabs } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Collapse } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
 import { Link, NavLink } from "react-router-dom";
+import FailLoginModal from "../Failed_Login_Modal/FailLoginModal";
+import { MODAL_OK } from "../../redux/constants/Constants";
 const { TabPane } = Tabs;
 const { Panel } = Collapse;
 export default function Movieschedule_filmdetail() {
   const FilmDetail = useSelector((state) => state.FilmDetailReducer.PhimDetail);
   // console.log(FilmDetail);
+  const dispatch = useDispatch();
   const { heThongRapChieu } = FilmDetail;
+
   const getBoxKey = (key) => {
     console.log(key);
   };
+
+  //Kiểm tra tình trạng đăng nhập, để cho phép đi vô phòng vé hay không
+  const { userAccount } = useSelector((state) => state.UserReducer);
 
   return (
     <div className="movieScheduleFilmDetail py-10">
@@ -81,16 +88,35 @@ export default function Movieschedule_filmdetail() {
                                   key={index}
                                   className="Content_Time_Inside_Box flex-grow-0  flex "
                                 >
-                                  <Link
-                                    to={`/chitietphongve/${ngay.maLichChieu}`}
-                                    className="Time_Link"
-                                    target="_blank"
-                                  >
-                                    <CalendarOutlined />
-                                    <span className="__time ml-2">
-                                      {ngay.ngayChieuGioChieu}
-                                    </span>
-                                  </Link>
+                                  {/* Xét điều kiện account đã đăng nhập chưa */}
+                                  {userAccount.taiKhoan?.trim() !==
+                                  undefined ? (
+                                    <Link
+                                      to={`/chitietphongve/${ngay.maLichChieu}`}
+                                      className="Time_Link"
+                                      target="_blank"
+                                    >
+                                      <CalendarOutlined />
+                                      <span className="__time ml-2">
+                                        {ngay.ngayChieuGioChieu}
+                                      </span>
+                                    </Link>
+                                  ) : (
+                                    <button
+                                      onClick={() => {
+                                        dispatch({
+                                          type: MODAL_OK,
+                                        });
+                                      }}
+                                      className="Time_Link_NoLogin Time_Link"
+                                      target="_blank"
+                                    >
+                                      <CalendarOutlined />
+                                      <span className="__time ml-2">
+                                        {ngay.ngayChieuGioChieu}
+                                      </span>
+                                    </button>
+                                  )}
                                 </div>
                               );
                             })}
@@ -175,15 +201,33 @@ export default function Movieschedule_filmdetail() {
                                   key={index}
                                   className="Content_Time_Inside_Box flex-grow-0  flex "
                                 >
-                                  <Link
-                                    className="Time_Link"
-                                    to={`/chitietphongve/${ngay.maLichChieu}`}
-                                  >
-                                    <CalendarOutlined />
-                                    <span className="__time ml-2">
-                                      {ngay.ngayChieuGioChieu}
-                                    </span>
-                                  </Link>
+                                  {userAccount.taiKhoan?.trim() !==
+                                  undefined ? (
+                                    <Link
+                                      className="Time_Link"
+                                      to={`/chitietphongve/${ngay.maLichChieu}`}
+                                    >
+                                      <CalendarOutlined />
+                                      <span className="__time ml-2">
+                                        {ngay.ngayChieuGioChieu}
+                                      </span>
+                                    </Link>
+                                  ) : (
+                                    <button
+                                      onClick={() => {
+                                        dispatch({
+                                          type: MODAL_OK,
+                                        });
+                                      }}
+                                      className="Time_Link_NoLogin Time_Link"
+                                      target="_blank"
+                                    >
+                                      <CalendarOutlined />
+                                      <span className="__time ml-2">
+                                        {ngay.ngayChieuGioChieu}
+                                      </span>
+                                    </button>
+                                  )}
                                 </div>
                               );
                             })}
@@ -198,6 +242,8 @@ export default function Movieschedule_filmdetail() {
           })}
         </Collapse>
       </div>
+      {/* **** Failed-Login-Modal here */}
+      <FailLoginModal />
     </div>
   );
 }

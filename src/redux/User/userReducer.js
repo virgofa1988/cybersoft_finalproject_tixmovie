@@ -1,5 +1,7 @@
 import {
   GET_USER_INFOR,
+  MODAL_CANCEL,
+  MODAL_OK,
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
 } from "../constants/Constants";
@@ -12,6 +14,7 @@ if (localStorage.getItem(USER_LOGIN)) {
 const initialState = {
   userAccount: loginAccount,
   userInfo: {},
+  modalStatus: false,
 };
 
 export const UserReducer = (state = initialState, action) => {
@@ -25,7 +28,16 @@ export const UserReducer = (state = initialState, action) => {
       state.userInfo = action.userInfo;
       return { ...state };
     }
-
+    case MODAL_OK: {
+      state.modalStatus = true;
+      console.log("Reducer Modal OK");
+      return { ...state };
+    }
+    case MODAL_CANCEL: {
+      state.modalStatus = false;
+      console.log("Reducer Modal Cancel");
+      return { ...state };
+    }
     default:
       return state;
   }

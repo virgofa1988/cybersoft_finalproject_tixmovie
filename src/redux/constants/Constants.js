@@ -28,3 +28,4 @@ export const CHON_GHE = "chonGhe";
 export const TIME_RESET = "Time_Reset";
 export const MODAL_OK = "Modal_OK";
 export const MODAL_CANCEL = "Modal_CANCEL";
+export const MODAL_TEST = "Modal_Test";

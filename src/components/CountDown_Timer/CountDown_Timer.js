@@ -53,6 +53,7 @@ const CountDown_Timer = (props) => {
     lineHeight: 1,
     letterSpacing: "normal",
   };
+  //Nội dung gửi vào TimerModal, có điều kiện xét để triggerModal true or false, gửi vào các hàm để forceRender Phòng vé(mục đích là clear thông tin các ghế đang chọn, tổng tiền sau khi đã hét thời gian giữ vé), và hàm yêu cầu reset lại thời gian nếu bấm OK
   const contents = {
     notiText: "Thời gian đặt vé đã hết...",
     triggerModal: triggerModal,

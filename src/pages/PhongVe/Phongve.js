@@ -10,6 +10,10 @@ import CountDown_Timer from "../../components/CountDown_Timer/CountDown_Timer";
 const currentDate = new Date();
 
 export default function Phongve(props) {
+  //userAccount Check
+  //Lấy userAccount từ redux để kiểm tra xem user đã từng Login Chưa(Khi logIn thành Công đã lưu về localStorage)
+  const { userAccount } = useSelector((state) => state.UserReducer);
+
   const maLichChieu = props.match.params.id;
   const dispatch = useDispatch();
   //State này giúp force to render Phong Ve Component, sau khi thời gian giữ vé đã hết. Và được pass vào CountDown_Timer thông qua hàm forceRenderPhongVe and và được gọi ở TImerModal sau khi tắt thông báo.
@@ -70,7 +74,7 @@ export default function Phongve(props) {
                   alt="userLogo"
                 />
               </div>
-              <span>User Account</span>
+              <span>{userAccount.taiKhoan}</span>
             </div>
           </div>
         </div>

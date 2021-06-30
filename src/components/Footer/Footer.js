@@ -169,7 +169,7 @@ export default function Footer() {
         <div className="footer_mobile_bottom text-center">
           <div className="footer_mobile_bottom_left">
             <div className="zion_picture my-2">
-              <img width="80px" src="./img/zion.jpg" alt="zion" />
+              <img width="80px" src="../../img/zion.jpg" alt="zion" />
             </div>
             <div className="tix_contact">
               <h3 className="text-white">

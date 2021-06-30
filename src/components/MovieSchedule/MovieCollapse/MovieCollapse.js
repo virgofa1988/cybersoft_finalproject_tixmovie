@@ -2,20 +2,27 @@ import React from "react";
 import "./MovieCollapse.css";
 import { Collapse } from "antd";
 import { CalendarOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { memo } from "react";
-import { useEffect } from "react";
+
 import { Link } from "react-router-dom";
+import FailLoginModal from "../../Failed_Login_Modal/FailLoginModal";
+import { MODAL_OK } from "../../../redux/constants/Constants";
 const { Panel } = Collapse;
 
 export const MovieCollapse = memo((props) => {
+  const dispatch = useDispatch();
   const MovieListBaseBox = useSelector(
     (state) => state.MovieScheduleReducer?.MovieListBaseBox
   );
   // console.log("Movie Collapse");
+  //Kiểm tra tình trạng đăng nhập, để cho phép đi vô phòng vé hay không
+  const { userAccount } = useSelector((state) => state.UserReducer);
 
   return (
     <div>
+      {/* **** Failed-Login-Modal here */}
+      <FailLoginModal />
       <Collapse
         defaultActiveKey={["0"]}
         expandIconPosition="right"
@@ -61,15 +68,32 @@ export const MovieCollapse = memo((props) => {
                         key={index}
                         className="Content_Time_Inside_Box flex-grow-0 max-w-1/4 flex "
                       >
-                        <Link
-                          className="Time_Link"
-                          to={`/chitietphongve/${ngay.maLichChieu}`}
-                        >
-                          <CalendarOutlined />
-                          <span className="__time ml-2">
-                            {ngay.ngayChieuGioChieu.substr(11, 5)}
-                          </span>
-                        </Link>
+                        {userAccount.taiKhoan?.trim() !== undefined ? (
+                          <Link
+                            className="Time_Link"
+                            to={`/chitietphongve/${ngay.maLichChieu}`}
+                          >
+                            <CalendarOutlined />
+                            <span className="__time ml-2">
+                              {ngay.ngayChieuGioChieu.substr(11, 5)}
+                            </span>
+                          </Link>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              dispatch({
+                                type: MODAL_OK,
+                              });
+                            }}
+                            className="Time_Link_NoLogin Time_Link"
+                            target="_blank"
+                          >
+                            <CalendarOutlined />
+                            <span className="__time ml-2">
+                              {ngay.ngayChieuGioChieu.substr(11, 5)}
+                            </span>
+                          </button>
+                        )}
                       </div>
                     );
                   })}

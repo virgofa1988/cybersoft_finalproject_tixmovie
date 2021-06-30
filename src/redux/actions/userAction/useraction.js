@@ -91,6 +91,7 @@ export const updateUserInfo = (userInfo) => {
     try {
       const result = await axios({
         url: UPDATE_USER_INFO_API,
+        method: "PUT",
         data: userInfo,
         headers: {
           Authorization: "Bearer" + localStorage.getItem(ACCESS_TOKEN),
@@ -102,3 +103,5 @@ export const updateUserInfo = (userInfo) => {
     }
   };
 };
+
+//User đặt vé
