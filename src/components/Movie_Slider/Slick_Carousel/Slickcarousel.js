@@ -10,9 +10,9 @@ export default function Slickcarousel() {
     (state) => state.HomeToolReducer.PhimListHomeTool
   );
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 200,
     rows: 2,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -24,9 +24,10 @@ export default function Slickcarousel() {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 4,
+          slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: false,
+          rows: 1,
         },
       },
     ],

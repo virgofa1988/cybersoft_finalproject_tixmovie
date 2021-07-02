@@ -10,6 +10,7 @@ import {
 import {
   GET_USER_INFO_API,
   UPDATE_USER_INFO_API,
+  USER_DAT_VE,
   USER_LOGIN_API,
   USER_SIGNUP_API,
 } from "../../DomainAPI/domainAPI";
@@ -23,7 +24,7 @@ export const userLoginAPI = (userAccount) => {
         method: "POST",
         data: userAccount,
       });
-      //   console.log("User Login", result.data);
+      console.log("User Login", result.data);
       dispatch({
         type: USER_LOGIN_SUCCESS,
         userAccount: result.data,
@@ -105,3 +106,25 @@ export const updateUserInfo = (userInfo) => {
 };
 
 //User đặt vé
+export const userDatVe = (thongTinVeDat) => {
+  //Lấy token từ localStorage về và parse lại thành string.
+  const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+  // console.log(token);
+
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: USER_DAT_VE,
+        method: "POST",
+        data: thongTinVeDat,
+        headers: {
+          //Bearer phải có khoảng trắng cách ra
+          Authorization: "Bearer " + token,
+        },
+      });
+      alert(result.data);
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};

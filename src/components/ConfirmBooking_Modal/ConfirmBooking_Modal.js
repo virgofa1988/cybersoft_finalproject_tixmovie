@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Modal } from "antd";
-import { useEffect } from "react";
-import { FrownOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import "./FailLoginModal.css";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { MODAL_CANCEL } from "../../redux/constants/Constants";
-const FailLoginModal = () => {
+import "./ConfirmBooking_Modal.css";
+import { SyncOutlined } from "@ant-design/icons";
+import { Modal } from "antd";
+import { MODAL_RESET_BOOKING } from "../../redux/constants/Constants";
+
+const ConfirmBooking_Modal = (props) => {
+  console.log(props);
   const dispatch = useDispatch();
 
-  const { modalStatus } = useSelector((state) => state.UserReducer);
+  const { modalConfirmBooking } = useSelector((state) => state.UserReducer);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -18,25 +18,26 @@ const FailLoginModal = () => {
   };
 
   const handleOk = () => {
-    dispatch({
-      type: MODAL_CANCEL,
-    });
     setIsModalVisible(false);
+    props.datVe(props.thongTinVeDat);
+    dispatch({
+      type: MODAL_RESET_BOOKING,
+    });
   };
 
   const handleCancel = () => {
-    dispatch({
-      type: MODAL_CANCEL,
-    });
     setIsModalVisible(false);
+    dispatch({
+      type: MODAL_RESET_BOOKING,
+    });
   };
 
   //Trigger Modal when True, and monitoring Trigger
   useEffect(() => {
-    if (modalStatus) {
+    if (modalConfirmBooking) {
       showModal();
     }
-  }, [modalStatus]);
+  }, [modalConfirmBooking]);
 
   return (
     <>
@@ -44,7 +45,7 @@ const FailLoginModal = () => {
         centered
         title={
           <div className="text-center text-6xl text-red-500">
-            <FrownOutlined />
+            <SyncOutlined spin />
           </div>
         }
         visible={isModalVisible}
@@ -53,9 +54,9 @@ const FailLoginModal = () => {
         footer={
           <div className="flex justify-around">
             <div>
-              <Link to="/login" className="btnModal">
-                <button>Đăng Nhập</button>
-              </Link>
+              <div className="btnModal">
+                <button onClick={handleOk}>Xác Nhận</button>
+              </div>
             </div>
             <div className="btnModalLater">
               <button onClick={handleCancel}>Để Sau</button>
@@ -63,10 +64,9 @@ const FailLoginModal = () => {
           </div>
         }
       >
-        <h1 className="text-center text-lg">Opps..</h1>
-        <p className="text-center text-lg">Bạn Chưa Đăng Nhập...</p>
+        <h1 className="text-center text-lg">Xác Nhận Đặt Vé</h1>
       </Modal>
     </>
   );
 };
-export default FailLoginModal;
+export default ConfirmBooking_Modal;

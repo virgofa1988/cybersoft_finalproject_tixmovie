@@ -79,7 +79,7 @@
   height: 100%;
   width: 100%;
   border-radius: 5px;
-  cursor: default;
+  cursor: pointer;
   outline: none;
 }
 .PhongVe_SideBar_Btn button span {

@@ -1,12 +1,19 @@
 import { CHON_GHE, TICKET_BOX_DETAIL } from "../constants/Constants";
 
 const initialState = {
+  //Danh Sách Ghế Load từ API về, có thêm isChosing để phân loại ghế đang lựa chọn
   danhSachGhe: [],
+  //Chứa Thông Tin của Rạp và Phim đang hiển thị trong phòng vé
   thongTinPhim: {},
+  //Danh Sach này chứa các ghế người dùng đang chọn nhưng chưa book, có thể thêm/remove lúc lựa chọn
   danhSachGheChon: [],
   TongTienVe: 0,
+  //Dãy Ghế Chọn này chỉ lữu mảng chuổi là tên ghế để load ra PhongVe_SideBar tên các ghế đang đặt
   DayGheChon: [],
+  //Dùng để hỗ trợ reset lại Modal Timer của thời gian giữ vé
   TimeReset_Modal: false,
+  //Quản lý mảng ghế dùng để book vé khi gửi lên API cho đúng định dạng dữ Liệu
+  danhSachGheDatVe: [],
 };
 
 export const TicketReducer = (state = initialState, action) => {
@@ -69,7 +76,22 @@ export const TicketReducer = (state = initialState, action) => {
       state.TongTienVe = state.danhSachGheChon.reduce((tong, ghe) => {
         return (tong += ghe.giaVe);
       }, 0);
-
+      //Tạo mảng ghế đặt với các trường thuộc tính giống API yêu cầu gửi lên từ danhSachGheChon
+      //Sử dụng hàm Map, và ES6 restParams để remove các Property(Key) không cần sử dụng
+      //Ở đây là chỉ giữ lại 2 Keys là maGhe,giaVe
+      const DayGheDatUpdate = state.danhSachGheChon.map(
+        ({
+          daDat,
+          isChosing,
+          loaiGhe,
+          maRap,
+          stt,
+          taiKhoanNguoiDat,
+          tenGhe,
+          ...keepProperties
+        }) => keepProperties
+      );
+      state.danhSachGheDatVe = DayGheDatUpdate;
       return { ...state };
     }
 

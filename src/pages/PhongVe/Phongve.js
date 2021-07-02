@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAPITicketBox } from "../../redux/actions/BoxAction/Boxaction";
 import "./Phongve.css";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import { CHON_GHE } from "../../redux/constants/Constants";
+import {
+  CHON_GHE,
+  MODAL_CONFIRM_BOOKING,
+} from "../../redux/constants/Constants";
 import { MyDate } from "../../components/Date/Date";
 import CountDown_Timer from "../../components/CountDown_Timer/CountDown_Timer";
-
+import { userDatVe } from "../../redux/actions/userAction/useraction";
+import ConfirmBooking_Modal from "../../components/ConfirmBooking_Modal/ConfirmBooking_Modal";
+import { NavLink, Redirect } from "react-router-dom";
 const currentDate = new Date();
 
 export default function Phongve(props) {
@@ -26,7 +31,10 @@ export default function Phongve(props) {
   const thongTinPhim = useSelector(
     (state) => state.TicketReducer?.thongTinPhim
   );
-  // console.log("PhongVe");
+  const danhSachGheDatVe = useSelector(
+    (state) => state.TicketReducer?.danhSachGheDatVe
+  );
+  // console.log("Dãy ghế chọn", danhSachGheChon);
 
   useEffect(() => {
     dispatch(getAPITicketBox(maLichChieu));
@@ -48,6 +56,20 @@ export default function Phongve(props) {
     setBookingTime(!bookingTime);
   };
 
+  //Hàm Đặt Vé
+  //Xử lý mảng danhSachGheChon thành mangGheDat để gửi data lên server vì mảng ghế đặt chị có 2 properties là giaVe và maGhe [{giaVe:75000,maGhe:92045}]
+
+  console.log(danhSachGheDatVe);
+
+  const thongTinVeDat = {
+    maLichChieu: maLichChieu,
+    danhSachVe: danhSachGheDatVe,
+    taiKhoanNguoiDung: userAccount.taiKhoan,
+  };
+  const datVe = (thongTinVeDat) => {
+    dispatch(userDatVe(thongTinVeDat));
+    forceRenderPhongVe();
+  };
   return (
     <div className="PhongVe_Container">
       <div className="PhongVe_Header">
@@ -74,7 +96,9 @@ export default function Phongve(props) {
                   alt="userLogo"
                 />
               </div>
-              <span>{userAccount.taiKhoan}</span>
+              <NavLink to="/userinfo" className="text-gray-500 italic text-md">
+                {userAccount.taiKhoan}
+              </NavLink>
             </div>
           </div>
         </div>
@@ -299,6 +323,11 @@ export default function Phongve(props) {
               style={{
                 background: "linear-gradient(223deg,#b4ec51 0,#429321 100%)",
               }}
+              onClick={() => {
+                dispatch({
+                  type: MODAL_CONFIRM_BOOKING,
+                });
+              }}
             >
               <span>Đặt Vé</span>
             </button>
@@ -311,6 +340,7 @@ export default function Phongve(props) {
             </button>
           )}
         </div>
+        <ConfirmBooking_Modal datVe={datVe} thongTinVeDat={thongTinVeDat} />
       </div>
       {/* Dãy ghế chính */}
       <div className="PhongVe_Content">
@@ -332,10 +362,7 @@ export default function Phongve(props) {
                   </div>
                   <div className="RapInfo_Time">
                     <span>Thời gian giữ ghế</span>
-                    <CountDown_Timer
-                      maLichChieu={maLichChieu}
-                      forceRenderPhongVe={forceRenderPhongVe}
-                    />
+                    <CountDown_Timer forceRenderPhongVe={forceRenderPhongVe} />
                   </div>
                 </div>
                 <div className="PhongVe_DayGhe_GheInfo">

@@ -15,3 +15,6 @@ export const GET_USER_INFO_API =
 
 export const UPDATE_USER_INFO_API =
   "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
+
+export const USER_DAT_VE =
+  "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe";

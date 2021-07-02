@@ -1,0 +1,105 @@
+/* .userInfoLayout_Body {
+  height: 100vh;
+} */
+.userInfoLayout_Body .ant-tabs .ant-tabs {
+  height: 100%;
+}
+.userInfoLayout_Body .ant-tabs-tab {
+  padding: 30px 16px !important;
+}
+.userInfoLayout_Body .ant-tabs-tab .userinfo__menu {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.userInfoLayout_Body .ant-tabs-tab-active .userinfo__menu {
+  color: rgb(220, 38, 38);
+  opacity: 1;
+}
+
+@media only screen and (max-width: 768px) {
+  .userInfoLayout_Body .ant-tabs {
+    flex-direction: column;
+  }
+  .userInfoLayout_Body .ant-tabs .ant-tabs-nav .ant-tabs-nav-list {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .userInfoLayout_Body .ant-tabs-content-holder .ant-tabs-tabpane .userName {
+    flex-direction: column;
+    text-align: center;
+  }
+  .userInfoLayout_Body .ant-tabs-tab {
+    padding: 15px 16px !important;
+  }
+  .userInfoLayout_Body .ant-tabs-content-holder .ant-tabs-content {
+    max-width: 100% !important;
+  }
+  .userInfoLayout_Body .ant-tabs-nav-list {
+    width: 100%;
+  }
+  .userInfoLayout_Body .ant-tabs-nav-list .ant-tabs-tab {
+    width: 50%;
+    justify-content: center;
+  }
+  .ThongTinVeDat_Table {
+    overflow-y: auto;
+    max-width: 100% !important;
+
+    max-height: 80vh;
+  }
+  #rc-tabs-0-panel-2 {
+    padding-left: 0;
+  }
+}
+.userInfoLayout_Body .ant-tabs-content-holder .ant-tabs-tabpane .userName {
+  align-items: center;
+}
+.userInfoLayout_Body
+  .ant-tabs-content-holder
+  .ant-tabs-tabpane
+  .userName
+  .user__icon {
+  margin-right: 2%;
+}
+
+#ThongTinVeDatId_Table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  position: relative;
+}
+#ThongTinVeDatId_Table td,
+#ThongTinVeDatId_Table th {
+  /* border: 1px solid #ddd; */
+  padding: 8px;
+
+  font-weight: 500;
+}
+#ThongTinVeDatId_Table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#ThongTinVeDatId_Table tr {
+  border-bottom: 1px solid #ddd;
+}
+#ThongTinVeDatId_Table tr:hover {
+  background-color: rgba(235, 84, 84, 0.334);
+}
+#ThongTinVeDatId_Table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: rgb(235, 84, 84);
+  color: white;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+}
+.ThongTinVeDat_Table {
+  overflow-y: auto;
+  max-width: 95%;
+  margin: 0 auto;
+  max-height: 90vh;
+  /* box-shadow: -4px 16px 20px 5px grey; */
+}

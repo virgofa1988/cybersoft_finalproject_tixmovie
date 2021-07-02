@@ -23,21 +23,8 @@ export default function MovieSlider() {
         // tabBarGutter="40px"
       >
         <TabPane tab="Đang Chiếu" key="1" className="mx-10">
-          <div className="container mx-auto hidden md:block">
+          <div className="container mx-auto md:block">
             <Slickcarousel />
-          </div>
-          <div className="md:hidden">
-            <SlickMovieMobile />
-            <button
-              className="showMoreBtn"
-              onClick={() => {
-                dispatch({
-                  type: showMoreMovieMobile,
-                });
-              }}
-            >
-              Show More
-            </button>
           </div>
         </TabPane>
         <TabPane tab="Sắp Chiếu" key="2" className="mx-10">

@@ -10,6 +10,7 @@ import Userinfo from "./pages/Userinfo/Userinfo";
 
 import Phongve from "./pages/PhongVe/Phongve";
 import Auth from "./components/Auth/Auth";
+import UserinfoLayout from "./pages/Userinfo/UserinfoLayout";
 
 export const history = createBrowserHistory(); //export để các nơi cần điều hướng có thể  xử dụng history.push("path")
 
@@ -20,12 +21,20 @@ function App() {
         <Switch>
           {/* Set trang chủ */}
           {/* //Auth Componet là cơ chế bảo vể router đề phòng đăng nhập từ URL mà ko đăng nhập */}
-          <Auth path="/chitietphongve/:id" component={Phongve} />
+
+          <Auth path="/chitietphongve/:id" Component={Phongve} />
           {/* <Route path="/chitietphongve/:id" exact component={Phongve}></Route> */}
+
+          <Auth path="/userinfo" Component={UserinfoLayout} />
+          {/* <Route
+            path="/userinfolayout"
+            exact
+            component={UserinfoLayout}
+          ></Route> */}
 
           <Route path="/login" exact component={Login}></Route>
           <Route path="/signup" exact component={Signup}></Route>
-          <Route path="/userinfo" exact component={Userinfo}></Route>
+
           <Route path="/filmdetail/:id" exact component={FilmDetail}></Route>
           <Route path="/" exact component={Home}></Route>
 

@@ -1,7 +1,6 @@
 import React, { memo, useState } from "react";
 import { Modal, Button } from "antd";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 
 const TimerModal = (props) => {
   const { notiText, triggerModal } = props.contents;
@@ -29,7 +28,7 @@ const TimerModal = (props) => {
     props.resetTriggerModal();
   };
 
-  //Trigger Modal when True, and monitoring Trigger
+  //Trigger Modal when True, and monitoring Trigger, được từ CountDown_Timer sau khi thời gian chạy hết
   useEffect(() => {
     if (triggerModal) {
       showModal();

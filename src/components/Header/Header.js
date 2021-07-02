@@ -3,10 +3,27 @@ import "./Header.css";
 import { NavLink } from "react-router-dom";
 import LocationSelect from "./LocationSelect/LocationSelect";
 import { useSelector } from "react-redux";
+import {
+  ACCESS_TOKEN,
+  USER_LOGIN,
+  USER_LOGIN_SUCCESS,
+} from "../../redux/constants/Constants";
+import { useDispatch } from "react-redux";
 export default function Header() {
   //Lấy userAccount từ redux để kiểm tra xem user đã từng Login Chưa(Khi logIn thành Công đã lưu về localStorage)
-  const { userAccount } = useSelector((state) => state.UserReducer);
 
+  const dispatch = useDispatch();
+  const logOut = () => {
+    localStorage.removeItem(USER_LOGIN);
+    localStorage.removeItem(ACCESS_TOKEN);
+    //Sau Khi logout gửi lên object rỗng để update lại reducer, điều này giúp các component sử dụng props userAccount sẽ tự reload
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      userAccount: {},
+    });
+  };
+
+  const { userAccount } = useSelector((state) => state.UserReducer);
   return (
     <nav className="relative flex items-center flex-wrap shadow px-4 text-gray-700">
       <div className="logo m-2 flex text-gray-700">
@@ -58,22 +75,26 @@ export default function Header() {
           <div className="lg:border-r-2">
             {/* Giá trị ban đầu của userAccount trên Redux là Object rỗng nên sẽ undefine nếu chưa login successful */}
             {userAccount.taiKhoan?.trim() !== undefined ? (
-              <NavLink
-                to="/userinfo"
-                className=" p-2 mx-3 lg:inline-flex lg:flex-row lg:w-auto flex"
-              >
-                {/* <img
-                  width="20px"
-                  className="rounded-full mr-2 hidden lg:block"
-                  src="./img/avatar.png"
-                  alt="avatar"
-                /> */}
-
-                <span className="login_location_style font-medium tracking-widest text-gray-600">
-                  <span>Hello, </span>
-                  {userAccount.taiKhoan}
-                </span>
-              </NavLink>
+              <div id="right-navlink_accountName" className="relative">
+                <NavLink
+                  to="/userinfo"
+                  className=" p-2 mx-3 lg:inline-flex lg:flex-row lg:w-auto flex"
+                >
+                  <span className="login_location_style font-medium tracking-widest text-gray-600">
+                    <span>Hello, </span>
+                    {userAccount.taiKhoan}
+                  </span>
+                </NavLink>
+                <div
+                  className="hidden shadow-xl"
+                  id="right-navlink_logout"
+                  onClick={() => {
+                    logOut();
+                  }}
+                >
+                  <span className="text-gray-700 font-semibold">Đăng xuất</span>
+                </div>
+              </div>
             ) : (
               <NavLink
                 to="/login"

@@ -1,7 +1,9 @@
 import {
   GET_USER_INFOR,
   MODAL_CANCEL,
+  MODAL_CONFIRM_BOOKING,
   MODAL_OK,
+  MODAL_RESET_BOOKING,
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
 } from "../constants/Constants";
@@ -14,7 +16,8 @@ if (localStorage.getItem(USER_LOGIN)) {
 const initialState = {
   userAccount: loginAccount,
   userInfo: {},
-  modalStatus: false,
+  modalStatus: false, //Khi Chưa Đăng Nhập kích hoạt modal
+  modalConfirmBooking: false, //Khi xác Nhận đặt vé kích hoạt modal
 };
 
 export const UserReducer = (state = initialState, action) => {
@@ -24,7 +27,7 @@ export const UserReducer = (state = initialState, action) => {
       return { ...state, userAccount: action.userAccount };
     }
     case GET_USER_INFOR: {
-      // console.log(action.userInfo);
+      console.log(action.userInfo);
       state.userInfo = action.userInfo;
       return { ...state };
     }
@@ -38,6 +41,15 @@ export const UserReducer = (state = initialState, action) => {
       console.log("Reducer Modal Cancel");
       return { ...state };
     }
+    case MODAL_CONFIRM_BOOKING: {
+      state.modalConfirmBooking = true;
+      return { ...state };
+    }
+    case MODAL_RESET_BOOKING: {
+      state.modalConfirmBooking = false;
+      return { ...state };
+    }
+
     default:
       return state;
   }

@@ -10,3 +10,23 @@
   background-color: brown;
   outline: none;
 }
+#right-navlink_accountName {
+  transition: all 0.3s ease-in-out;
+}
+#right-navlink_logout {
+  position: absolute;
+  padding: 10px 30px;
+  top: 30px;
+  left: 18px;
+  z-index: 999;
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  box-shadow: 4px 6px 3px 4px #8080808c;
+}
+#right-navlink_accountName:hover #right-navlink_logout {
+  display: block;
+}

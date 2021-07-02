@@ -9,7 +9,9 @@ export const showMoreMovieMobile = "SHOW_MORE_MOBILE_MOVIE";
 export const getFilmDetail = "GET_FILM_DETAIL";
 // User Constant
 export const USER_LOGIN = "userLogin";
+
 export const ACCESS_TOKEN = "userLogin_Token";
+
 export const USER_LOGIN_SUCCESS = "XU_LY_USER_LOGIN_SUCCESS";
 export const USER_SIGNUP_SUCCESS = "USER_SIGNUP";
 export const GET_USER_INFOR = "GET_USER_INFORMATION";
@@ -29,3 +31,5 @@ export const TIME_RESET = "Time_Reset";
 export const MODAL_OK = "Modal_OK";
 export const MODAL_CANCEL = "Modal_CANCEL";
 export const MODAL_TEST = "Modal_Test";
+export const MODAL_CONFIRM_BOOKING = "modalBookingConfirmation";
+export const MODAL_RESET_BOOKING = "modalBookingReset";

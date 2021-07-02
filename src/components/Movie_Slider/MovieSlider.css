@@ -127,3 +127,24 @@
 .showMoreBtn:hover {
   color: #0f0e0e;
 }
+@media only screen and (max-width: 768px) {
+  .movie__slider .container {
+    height: 560px;
+  }
+  .movie__slider .slick-slider,
+  .movie__slider .slick-list,
+  .movie__slider .slick-list .slick-track,
+  .movie__slider .slick-list .slick-track .slick-slide > div {
+    height: 100%;
+  }
+  .movie__slider .movie_item .movie_info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .movie__slider .movie_item .showHover .btnMuaVe {
+    bottom: 4%;
+  }
+}
