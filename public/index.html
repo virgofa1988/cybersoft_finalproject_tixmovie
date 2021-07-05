@@ -26,6 +26,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.2/iconfont/material-icons.min.css"
     />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
 
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -53,20 +58,7 @@
     -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- MenuButton Toogler -->
-    <script>
-      $(document).ready(function () {
-        $(".nav-toggler").each(function (_, navToggler) {
-          var target = $(navToggler).data("target");
-          $(navToggler).on("click", function () {
-            $(target).animate({
-              height: "toggle",
-            });
-          });
-        });
-      });
-    </script>
-    <!-- MenuButton Toogler -->
+
     <!-- VenoBox -->
     <script
       type="text/javascript"

@@ -18,3 +18,10 @@ export const UPDATE_USER_INFO_API =
 
 export const USER_DAT_VE =
   "https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe";
+
+export const GET_USER_LIST =
+  "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP01&soTrang=1&soPhanTuTrenTrang=20";
+
+//Thao tác User
+export const UPDATE_USER_INFO =
+  "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";

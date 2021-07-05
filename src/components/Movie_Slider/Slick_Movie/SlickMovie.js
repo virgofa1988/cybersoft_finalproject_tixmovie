@@ -5,7 +5,7 @@ export default function SlickMovie(props) {
   return (
     <div className="movie_item m-2 relative h-full md:h-72 lg:h-96 group cursor-pointer">
       <Link to={`/filmdetail/${props.Phim.maPhim}`}>
-        <div className="img-bg h-5/6 md:h-3/4">
+        <div className="img-bg h-3/4 md:h-3/4">
           <img
             className="w-full h-full rounded-lg"
             src={props.Phim.hinhAnh}

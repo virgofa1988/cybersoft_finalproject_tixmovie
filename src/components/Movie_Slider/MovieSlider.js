@@ -14,7 +14,7 @@ export default function MovieSlider() {
   const dispatch = useDispatch();
   // let isShowMoreBtnClick = false;
   return (
-    <div className="movie__slider">
+    <div className="movie__slider" id="movie__slider">
       <Tabs
         defaultActiveKey="key"
         large

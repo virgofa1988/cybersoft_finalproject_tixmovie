@@ -1,5 +1,4 @@
 import React from "react";
-import Userinfo from "../../pages/Userinfo/Userinfo";
 
 export default function Table_ThongTinVeDat(props) {
   const { userInfo } = props;

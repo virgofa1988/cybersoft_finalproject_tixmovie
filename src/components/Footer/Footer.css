@@ -40,3 +40,10 @@
 .doiTacList .doiTacListrow {
   justify-content: center;
 }
+.scroll-to-top {
+  padding: 10px;
+  position: fixed;
+  top: 90%;
+  right: 10px;
+  cursor: pointer;
+}

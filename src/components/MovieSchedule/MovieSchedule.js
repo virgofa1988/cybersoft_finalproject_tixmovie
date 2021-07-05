@@ -54,7 +54,7 @@ export default function MovieSchedule() {
   };
 
   return (
-    <div className="movieSchedule hidden md:block">
+    <div className="movieSchedule hidden md:block" id="movieSchedule">
       <Tabs
         defaultActiveKey="key"
         large

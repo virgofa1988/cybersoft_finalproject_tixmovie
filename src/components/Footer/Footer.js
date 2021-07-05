@@ -1,9 +1,9 @@
 import React from "react";
 import "./Footer.css";
-
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 export default function Footer() {
   return (
-    <footer className="footer_container py-5 text-white">
+    <footer className="footer_container py-5 text-white relative">
       <div className="footer_section">
         <div className="footer_mobile_top lg:px-52 flex flex-row">
           <div className="footer_mobile_top_left w-1/2 md:w-1/3 flex flex-col md:flex-row flex-wrap  text-center md:text-left">
@@ -201,6 +201,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <ScrollToTop />
     </footer>
   );
 }

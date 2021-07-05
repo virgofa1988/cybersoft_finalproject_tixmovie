@@ -9,12 +9,11 @@ export const showMoreMovieMobile = "SHOW_MORE_MOBILE_MOVIE";
 export const getFilmDetail = "GET_FILM_DETAIL";
 // User Constant
 export const USER_LOGIN = "userLogin";
-
 export const ACCESS_TOKEN = "userLogin_Token";
-
 export const USER_LOGIN_SUCCESS = "XU_LY_USER_LOGIN_SUCCESS";
 export const USER_SIGNUP_SUCCESS = "USER_SIGNUP";
 export const GET_USER_INFOR = "GET_USER_INFORMATION";
+export const ALL_USER_LIST = "allUserList";
 
 //Box Constant
 export const BOX_LIST = "boxList";

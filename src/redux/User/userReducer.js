@@ -1,4 +1,5 @@
 import {
+  ALL_USER_LIST,
   GET_USER_INFOR,
   MODAL_CANCEL,
   MODAL_CONFIRM_BOOKING,
@@ -18,6 +19,7 @@ const initialState = {
   userInfo: {},
   modalStatus: false, //Khi Chưa Đăng Nhập kích hoạt modal
   modalConfirmBooking: false, //Khi xác Nhận đặt vé kích hoạt modal
+  allUserListPerPage: [],
 };
 
 export const UserReducer = (state = initialState, action) => {
@@ -27,7 +29,7 @@ export const UserReducer = (state = initialState, action) => {
       return { ...state, userAccount: action.userAccount };
     }
     case GET_USER_INFOR: {
-      console.log(action.userInfo);
+      // console.log(action.userInfo);
       state.userInfo = action.userInfo;
       return { ...state };
     }
@@ -47,6 +49,11 @@ export const UserReducer = (state = initialState, action) => {
     }
     case MODAL_RESET_BOOKING: {
       state.modalConfirmBooking = false;
+      return { ...state };
+    }
+    case ALL_USER_LIST: {
+      state.allUserListPerPage = action.allUserList;
+      // console.log(state.allUserList);
       return { ...state };
     }
 

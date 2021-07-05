@@ -19,7 +19,7 @@ export default function LoginForm(props) {
       taiKhoan: Yup.string().required("**Please enter User Name**"),
       matKhau: Yup.string()
         .required("**Please enter your Password**")
-        .min(6, "Password should be at least 6 characters")
+        .min(5, "Password should be at least 5 characters")
         .max(32, "Password should be at least 32 Characters"),
     }),
     onSubmit: (values) => {

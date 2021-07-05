@@ -2,6 +2,7 @@ import axios from "axios";
 import { history } from "../../../App";
 import {
   ACCESS_TOKEN,
+  ALL_USER_LIST,
   GET_USER_INFOR,
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
@@ -9,6 +10,8 @@ import {
 } from "../../constants/Constants";
 import {
   GET_USER_INFO_API,
+  GET_USER_LIST,
+  UPDATE_USER_INFO,
   UPDATE_USER_INFO_API,
   USER_DAT_VE,
   USER_LOGIN_API,
@@ -123,6 +126,44 @@ export const userDatVe = (thongTinVeDat) => {
         },
       });
       alert(result.data);
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};
+
+//Lấy danh sách người dùng
+export const layDanhSachNguoiDung = (currentPage = 1, postPerPage = 20) => {
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=GP01&soTrang=${currentPage}&soPhanTuTrenTrang=${postPerPage}`,
+        method: "GET",
+      });
+      console.log(result.data);
+      dispatch({
+        type: ALL_USER_LIST,
+        allUserList: result.data,
+      });
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};
+
+//Cập Nhật Thông Tin Người Dùng
+export const updateUser = (user) => {
+  const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: UPDATE_USER_INFO,
+        method: "POST",
+        data: user,
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
     } catch (err) {
       console.log(err.response?.data);
     }

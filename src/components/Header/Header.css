@@ -15,18 +15,61 @@
 }
 #right-navlink_logout {
   position: absolute;
-  padding: 10px 30px;
-  top: 30px;
+  padding: 10px 30px 10px 15px;
+  top: 37px;
   left: 18px;
   z-index: 999;
   background-color: white;
   cursor: pointer;
   color: black;
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 400;
   font-style: italic;
-  box-shadow: 4px 6px 3px 4px #8080808c;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 #right-navlink_accountName:hover #right-navlink_logout {
   display: block;
+}
+/* #right-navlink_logout:hover {
+  background-color: red;
+  color: white;
+} */
+#right-navlink_logout .anticon.anticon-logout {
+  position: absolute;
+  top: 12px;
+  margin-left: 15px;
+}
+/* Toggle Menu */
+/* CHECKBOX TOGGLE SWITCH */
+/* @apply rules for documentation, these do not work as inline style */
+.toggle-checkbox:checked {
+  border-color: #f34b35d5;
+}
+.toggle-checkbox:checked + #inputMenuLabel {
+  color: #f34b35d5;
+}
+
+.toggle-checkbox:checked ~ #navigationLink {
+  display: block;
+}
+.toggle-checkbox {
+  top: 16px;
+  right: 18px;
+}
+.toggle-checkbox:hover {
+  border-color: #f34b35d5;
+}
+#inputMenuLabel {
+  position: absolute;
+  right: 29px;
+  top: 19px;
+  cursor: pointer;
+  color: rgba(128, 128, 128, 0.749);
+  font-weight: 500;
+}
+#navBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
 }

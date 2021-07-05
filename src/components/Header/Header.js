@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import LocationSelect from "./LocationSelect/LocationSelect";
@@ -8,6 +8,7 @@ import {
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
 } from "../../redux/constants/Constants";
+import { LogoutOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 export default function Header() {
   //Lấy userAccount từ redux để kiểm tra xem user đã từng Login Chưa(Khi logIn thành Công đã lưu về localStorage)
@@ -25,7 +26,10 @@ export default function Header() {
 
   const { userAccount } = useSelector((state) => state.UserReducer);
   return (
-    <nav className="relative flex items-center flex-wrap shadow px-4 text-gray-700">
+    <nav
+      className="relative flex items-center flex-wrap shadow px-4 text-gray-700"
+      id="navBar"
+    >
       <div className="logo m-2 flex text-gray-700">
         <NavLink to="/" className="inline-flex items-center">
           <img
@@ -35,37 +39,45 @@ export default function Header() {
           />
         </NavLink>
       </div>
-      <button
-        className="p-2 hover:bg-gray-200 rounded-md lg:hidden ml-auto nav-toggler inline-flex outline-none"
-        data-target="#navigationLink"
+      <input
+        type="checkbox"
+        name="toggle"
+        id="toggle"
+        className="toggle-checkbox absolute block w-16 h-8 rounded-full bg-white border-4 appearance-none cursor-pointer lg:hidden"
+      />
+      <label
+        for="toggle"
+        id="inputMenuLabel"
+        className="text-base absolute text-gray-700 lg:hidden select-none"
       >
-        <i className="material-icons">menu</i>
-      </button>
+        Menu
+      </label>
+      {/* Toggle Testing */}
       <div
-        className="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
+        className={`hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         id="navigationLink"
       >
         <div className="center-navlink lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto">
           <a
-            href="#"
+            href="#movie__slider"
             className="text-gray-700 hover:text-red-500 p-2 mx-3 lg:inline-flex lg:flex-row lg:w-auto"
           >
-            <span>Tin Tức</span>
+            <span>Lịch Chiếu</span>
           </a>
           <a
-            href="#"
+            href="#movieSchedule"
             className="text-gray-700 hover:text-red-500 p-2 mx-3 lg:inline-flex lg:flex-row lg:w-auto "
           >
             <span>Cụm Rạp</span>
           </a>
           <a
-            href="#"
+            href="#news_section"
             className=" text-gray-700 hover:text-red-500 p-2 mx-3 lg:inline-flex lg:flex-row lg:w-auto "
           >
             <span>Tin Tức</span>
           </a>
           <a
-            href="#"
+            href="#Mkt_container"
             className="text-gray-700 hover:text-red-500 p-2 mx-3 lg:inline-flex lg:flex-row lg:w-auto "
           >
             <span>Ứng Dụng</span>
@@ -85,14 +97,26 @@ export default function Header() {
                     {userAccount.taiKhoan}
                   </span>
                 </NavLink>
-                <div
-                  className="hidden shadow-xl"
-                  id="right-navlink_logout"
-                  onClick={() => {
-                    logOut();
-                  }}
-                >
-                  <span className="text-gray-700 font-semibold">Đăng xuất</span>
+                <div className={` hidden shadow-xl`} id="right-navlink_logout">
+                  {userAccount.maLoaiNguoiDung === "QuanTri" ? (
+                    <NavLink
+                      className="p-2 text-gray-700 font-semibold inline-block"
+                      to="/admin"
+                    >
+                      Administration
+                    </NavLink>
+                  ) : (
+                    ""
+                  )}
+                  <span
+                    onClick={() => {
+                      logOut();
+                    }}
+                    className="text-gray-700 p-2 inline-block font-semibold relative"
+                  >
+                    Đăng xuất
+                    <LogoutOutlined />
+                  </span>
                 </div>
               </div>
             ) : (

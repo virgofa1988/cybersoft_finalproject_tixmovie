@@ -4,7 +4,7 @@ import { Carousel } from "antd";
 
 export default function Marketing() {
   return (
-    <div className="Mkt_container mt-10">
+    <div className="Mkt_container mt-10" id="Mkt_container">
       <div className="Marketing_Container_1 ">
         <div className="Marketing_Container_2 md:grid md:grid-cols-2 my-2">
           <div className="Marketing_top text-white m-auto">

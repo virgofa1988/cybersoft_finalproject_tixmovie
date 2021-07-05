@@ -8,7 +8,7 @@ const { TabPane } = Tabs;
 
 export default function News() {
   return (
-    <section className="news_section">
+    <section className="news_section" id="news_section">
       <div className="news_container">
         <Tabs
           defaultActiveKey="1"
