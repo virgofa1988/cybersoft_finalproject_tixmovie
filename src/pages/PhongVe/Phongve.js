@@ -72,10 +72,21 @@ export default function Phongve(props) {
   };
   return (
     <div className="PhongVe_Container">
+      <input type="checkbox" name="" showSideBar id="showSideBar" />
+      <label
+        for="showSideBar"
+        className="showSideBarLabel animate-animated animate-bounce text-center"
+        id="showSideBarLabel"
+      >
+        <i class="fas fa-shopping-cart"></i>
+        <br />
+        Đặt Vé
+      </label>
+
       <div className="PhongVe_Header">
         <div className="PhongVe_Header_Info">
           <div className="PhongVe_Header_Detail">
-            <div className="PhongVe_Header_Detail_DatVe_Mobile">
+            <div className="PhongVe_Header_Detail_DatVe_Mobile flex">
               <p className="uppercase">
                 <span className="mx-1 text-lg">01</span>Chọn ghế
               </p>

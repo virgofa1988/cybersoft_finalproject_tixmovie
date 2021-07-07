@@ -106,3 +106,83 @@
   margin: 5px 0px;
   border: 1px solid white;
 }
+#btnAddUser {
+  padding: 5px 10px 5px 10px;
+  margin: 10px 0px;
+  background-color: #f44336dc;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  outline: none;
+}
+#btnAddUser:hover {
+  background-color: white;
+  color: #f44336dc;
+  border: 1px solid #f44336dc;
+}
+
+/* Xử lý input animation */
+/* Xử lý ô input cho các form */
+#searchUserContainer {
+  padding: 10px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.223);
+}
+#searchUserContainer input {
+  width: 100%;
+  outline: none;
+  height: 100%;
+  padding-top: 15px;
+  padding-left: 2px;
+  color: #9b9b9b;
+}
+#searchUserContainer input::placeholder {
+  opacity: 0;
+}
+#searchUserContainer input:focus::placeholder {
+  opacity: 1;
+  font-size: 12px;
+}
+#searchUserContainer label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#searchUserContainer label::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: -1px;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #fb4226;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
+}
+#searchUserContainer .content-name {
+  position: absolute;
+  bottom: 5px;
+  left: 0px;
+  transition: all 0.3s ease;
+  color: #9b9b9b;
+}
+
+#searchUserContainer input:focus + .label-name .content-name,
+#searchUserContainer input:valid + .label-name .content-name {
+  transform: translateY(-120%);
+  font-size: 12px;
+  color: #fb4226;
+  font-weight: 600;
+}
+
+#searchUserContainer input:focus + .label-name::after,
+#searchUserContainer input:valid + .label-name::after {
+  transform: translateX(0%);
+}

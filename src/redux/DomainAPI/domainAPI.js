@@ -25,3 +25,5 @@ export const GET_USER_LIST =
 //Thao tác User
 export const UPDATE_USER_INFO =
   "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung";
+export const ADD_USER_BY_ADMIN =
+  "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung";

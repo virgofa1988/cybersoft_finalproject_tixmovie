@@ -416,10 +416,38 @@
   color: white;
 }
 /* Mobile Screen */
-
+#showSideBar,
+#showSideBarLabel {
+  display: none;
+}
 @media only screen and (max-width: 768px) {
   .PhongVe_SideBar {
     transform: translateX(100%);
+  }
+
+  #showSideBarLabel {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    padding: 10px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(
+      223deg,
+      rgb(180, 236, 81) 0px,
+      rgb(66, 147, 33) 100%
+    );
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
+  #showSideBar:checked ~ .PhongVe_SideBar {
+    transform: translateX(0%);
+    width: 70%;
+    z-index: 90;
   }
   .PhongVe_Content {
     width: 100%;
@@ -428,7 +456,7 @@
     display: none;
   }
   .PhongVe_Header_Detail_DatVe_Mobile {
-    display: block;
+    display: flex;
   }
 }
 /* Styling Div Thông Tin Loại Ghế */

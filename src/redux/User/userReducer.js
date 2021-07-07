@@ -5,6 +5,7 @@ import {
   MODAL_CONFIRM_BOOKING,
   MODAL_OK,
   MODAL_RESET_BOOKING,
+  SEARCH_USER_LIST,
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
 } from "../constants/Constants";
@@ -20,6 +21,7 @@ const initialState = {
   modalStatus: false, //Khi Chưa Đăng Nhập kích hoạt modal
   modalConfirmBooking: false, //Khi xác Nhận đặt vé kích hoạt modal
   allUserListPerPage: [],
+  searchUserArray: [],
 };
 
 export const UserReducer = (state = initialState, action) => {

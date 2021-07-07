@@ -1,0 +1,27 @@
+#UpdateUser_MOdal {
+  display: flex;
+  flex-wrap: wrap;
+}
+#UpdateUser_MOdal label:first-child input {
+  cursor: not-allowed;
+  background-color: rgba(199, 64, 64, 0.181);
+}
+#UpdateUser_MOdal input {
+  width: 100%;
+  color: gray;
+  padding: 5px 10px 5px 0px;
+  outline: none;
+  background-color: rgba(199, 64, 64, 0.281);
+}
+#UpdateUser_MOdal label {
+  display: inline-block;
+  color: rgb(199, 64, 64);
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  margin: 10px 0;
+}
+#UpdateUser_MOdal input:focus {
+  background-color: rgb(199, 64, 64);
+  color: white;
+}

@@ -4,11 +4,13 @@ import {
   ACCESS_TOKEN,
   ALL_USER_LIST,
   GET_USER_INFOR,
+  SEARCH_USER_LIST,
   USER_LOGIN,
   USER_LOGIN_SUCCESS,
   USER_SIGNUP_SUCCESS,
 } from "../../constants/Constants";
 import {
+  ADD_USER_BY_ADMIN,
   GET_USER_INFO_API,
   GET_USER_LIST,
   UPDATE_USER_INFO,
@@ -151,6 +153,24 @@ export const layDanhSachNguoiDung = (currentPage = 1, postPerPage = 20) => {
   };
 };
 
+//Xoá Người Dùng
+export const removeUser = (taiKhoan) => {
+  const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      alert(result.data);
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};
 //Cập Nhật Thông Tin Người Dùng
 export const updateUser = (user) => {
   const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
@@ -158,14 +178,63 @@ export const updateUser = (user) => {
     try {
       const result = await axios({
         url: UPDATE_USER_INFO,
+        method: "PUT",
+        data: user,
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      //Reset lại UI sau khi user mới được cập nhật
+      dispatch(layDanhSachNguoiDung());
+      console.log(result.data);
+    } catch (err) {
+      console.log(err.response?.data);
+    }
+  };
+};
+
+//Add user
+export const addUserByAdmin = (user) => {
+  const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: ADD_USER_BY_ADMIN,
         method: "POST",
         data: user,
         headers: {
           Authorization: "Bearer " + token,
         },
       });
+      console.log(result.data);
     } catch (err) {
       console.log(err.response?.data);
+      alert(err.response?.data);
+    }
+  };
+};
+
+//Search User
+export const searchUser = (keyword) => {
+  const token = JSON.parse(localStorage.getItem(ACCESS_TOKEN));
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/TimKiemNguoiDungPhanTrang?MaNhom=GP01&tuKhoa=${keyword}&soTrang=1&soPhanTuTrenTrang=20`,
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      console.log(result.data);
+      //Cập nhật  lại danh sách userlist per page trên reducer
+      dispatch({
+        type: ALL_USER_LIST,
+        allUserList: result.data,
+      });
+    } catch (err) {
+      console.log(err.response?.data);
+      alert(err.response?.data);
     }
   };
 };

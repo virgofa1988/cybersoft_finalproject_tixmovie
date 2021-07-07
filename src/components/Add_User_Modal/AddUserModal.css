@@ -1,0 +1,32 @@
+#AddUser_Modal {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#AddUser_Modal input {
+  width: 100%;
+  color: gray;
+  padding: 5px 10px 5px 0px;
+  outline: none;
+  background-color: rgba(199, 64, 64, 0.281);
+}
+#AddUser_Modal label {
+  display: inline-block;
+  color: rgb(199, 64, 64);
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  margin: 10px 0;
+}
+#AddUser_Modal input:focus {
+  background-color: rgb(199, 64, 64);
+  color: white;
+}
+#AddUser_Modal label select {
+  background-color: rgba(199, 64, 64, 0.281);
+  width: 100%;
+  height: 30px;
+}
+#AddUser_Modal label select option {
+  height: 30px;
+}

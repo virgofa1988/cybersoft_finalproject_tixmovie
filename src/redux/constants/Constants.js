@@ -14,7 +14,7 @@ export const USER_LOGIN_SUCCESS = "XU_LY_USER_LOGIN_SUCCESS";
 export const USER_SIGNUP_SUCCESS = "USER_SIGNUP";
 export const GET_USER_INFOR = "GET_USER_INFORMATION";
 export const ALL_USER_LIST = "allUserList";
-
+export const SEARCH_USER_LIST = "searchUserList";
 //Box Constant
 export const BOX_LIST = "boxList";
 export const BOX_LIST_CODE = "boxListCode";
